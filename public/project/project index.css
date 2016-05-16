@@ -1,0 +1,15 @@
+body {
+    background-color: ghostwhite;
+}
+
+h1,h2,h3,h4,p,img {
+    color: black;
+    text-align: left;
+    margin-left: 30px;
+}
+
+ul {
+    color: black;
+    text-align: left;
+    margin-left: 10px;
+}
