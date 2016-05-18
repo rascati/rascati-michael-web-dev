@@ -1,0 +1,9 @@
+input {
+    margin-bottom: 5px;
+
+}
+
+.btn-primary {
+    background: cornflowerblue;
+    border-radius: 2px;
+}
