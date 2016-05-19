@@ -15,5 +15,5 @@ body {
 
 /*paragraph with class navbar AND pull right*/
 p.navbar-text.pull-right {
-  /*margin-right: 15px;*/
+  margin-right: 15px;
 }
