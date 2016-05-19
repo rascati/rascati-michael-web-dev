@@ -21,3 +21,12 @@ p.navbar-text.pull-right {
 p.navbar-text.pull-left {
     margin-left: 15px;
 }
+
+.mike-widget-tool {
+    position: absolute;
+    right: 0px;
+    background-color: white;
+    padding-left: 6px;
+    padding-bottom: 3px;
+    border-bottom-left-radius: 8px;
+}
