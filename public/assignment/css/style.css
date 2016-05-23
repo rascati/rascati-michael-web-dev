@@ -10,12 +10,10 @@ input {
 
 body {
     padding-top: 60px;
-
 }
 
-/*paragraph with class navbar AND pull right*/
 p.navbar-text.pull-right {
-  margin-right: 15px;
+    margin-right: 15px;
 }
 
 p.navbar-text.pull-left {
