@@ -10,7 +10,7 @@
     ];
 
     function PageService() {
-        
+
         var api = {
             createPage: createPage,
             findPageByWebsiteId: findPageByWebsiteId,
@@ -27,14 +27,18 @@
                 websiteId: websiteId
             }
             pages.push(newPage);
+            return newPage;
         }
 
         function findPageByWebsiteId(websiteId) {
             var result = [];
+            //console.log("websiteId: " + websiteId);
 
             for (var i in pages) {
+                //console.log(pages[i]);
                 if (pages[i].websiteId === websiteId) {
                     result.push(pages[i]);
+                    //console.log(pages[i]);
                 }
             }
             return result;
@@ -53,9 +57,10 @@
             for (var i in pages) {
                 if (pages[i]._id === pageId) {
                     pages[i].name = page.name;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
 
         function deletePage(pageId) {

@@ -48,14 +48,9 @@
             for (var i in users) {
                 if (users[i].username === username && users[i].password === password) {
                     return users[i];
-                    //var id = users[i]._id;
-                    //$location.url("/profile/" + id);
-                }/* else {
-                    vm.error = "User not found";
-                }*/
+                 }
             }
             return null;
-
         }
 
         function updateUser(userId, newUser) {
@@ -70,8 +65,13 @@
         }
 
         function deleteUser(userId) {
-
+            for (var i in users) {
+                if (users[i]._id === userId) {
+                    users.splice(i, 1);
+                    return true;
+                }
+            }
+            return false;
         }
-
     }
 })();

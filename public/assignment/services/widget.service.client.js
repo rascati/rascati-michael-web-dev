@@ -15,7 +15,6 @@
         {"_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p><b>Second HTML</b></p>"}
     ];
 
-
     function WidgetService() {
 
         var api = {
@@ -36,6 +35,7 @@
         function findWidgetsByPageId(pageId) {
             var result = [];
             for (var i in widgets) {
+                //console.log(widgets[i]);
                 if (widgets[i].pageId === pageId) {
                     result.push(widgets[i]);
                 }
@@ -56,9 +56,10 @@
             for (var i in widgets) {
                 if (widgets[i]._id === widgetId) {
                     widgets[i] = widget;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
 
         function deleteWidget(widgetId) {

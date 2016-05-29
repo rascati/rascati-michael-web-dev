@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="widget-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
                             <span class="glyphicon glyphicon-chevron-left">
                             </span>
                 </a>
@@ -14,13 +14,19 @@
     </div>
 </nav>
 
+<a href="" ng-click="model.createWidget('HEADING')">Heading</a>
+<br/>
+<a href="" ng-click="model.createWidget('IMAGE')">Image</a>
+<br/>
+<a href="" ng-click="model.createWidget('YOUTUBE')">YouTube</a>
+
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
             <a class="navbar-brand" href="#">
             </a>
             <p class="navbar-text pull-right">
-                <a href="../user/profile.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
                       <span class="glyphicon glyphicon-user">
                       </span>
                 </a>
@@ -28,9 +34,3 @@
         </div>
     </div>
 </nav>
-
-<a href="" ng-click="model.createWidget('HEADING')">Heading</a>
-<br/>
-<a href="" ng-click="model.createWidget('IMAGE')">Image</a>
-<br/>
-<a href="" ng-click="model.createWidget('YOUTUBE')">YouTube</a>

@@ -3,8 +3,15 @@
         .module("WebAppMaker")
         .controller("WidgetChooserController", WidgetChooserController);
 
-    function WidgetChooserController($sce) {
+    function WidgetChooserController($sce, $routeParams, WidgetService) {
         var vm = this;
+        var userId = $routeParams.userId;
+        vm.userId = userId;
+        var websiteId = $routeParams.websiteId;
+        vm.websiteId = websiteId;
+        var pageId = $routeParams.pageId;
+        vm.pageId = pageId;
+
         vm.createWidget = createWidget;
         
         function createWidget(widgetType) {

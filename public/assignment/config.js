@@ -6,6 +6,7 @@
     function Config($routeProvider) {
         $routeProvider
             //user routes
+            
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
                 controller: "LoginController",
@@ -17,7 +18,7 @@
                 controllerAs: "model"
             })
             //maybe should be /user/:id
-            .when("/user/:id", {
+            .when("/user/:userId", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
@@ -57,13 +58,20 @@
             })
 
             //widget routes
-            .when("/user/:uid/website/:wid/page/:pid/widget", {
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
                 templateUrl: "views/widget/widget-list.view.client.html",
                 controller: "WidgetListController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/website/:wid/page/:pid/widget/new", {
-                templateUrl: "views/widget/widget-chooser.view.client.html"
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
+                templateUrl: "views/widget/widget-chooser.view.client.html",
+                controller: "WidgetChooserController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", {
+                templateUrl: "view/widget/widget-edit.view.client.html",
+                controller: "EditWidgetController",
+                controllerAs: "model"
             })
 
             .otherwise({

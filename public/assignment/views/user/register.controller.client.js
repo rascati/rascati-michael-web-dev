@@ -10,7 +10,6 @@
         function register(username, password, verifyPassword) {
             if (username && password && verifyPassword) {
                 if (UserService.findUserByUsername(username)) {
-                    console.log("username taken");
                     vm.error = "This username is taken";
                 } else {
                     //Username is unique, proceed with registration
@@ -31,8 +30,7 @@
                     }
                 }
             } else {
-                console.log("empty fields");
-                vm.error = "Please fill every field in";
+                vm.error = "Please fill in every field";
             }
 
 
