@@ -14,30 +14,34 @@
 
         var api = {
             createUser: createUser,
-            findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findUserById: findUserById,
+            findUserByUsername: findUserByUsername,
+            findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             updateUser: updateUser,
             deleteUser: deleteUser
         };
         return api;
 
-        function updateUser(id, newUser) {
+        function createUser(user) {
+            users.push(user);
+        }
+
+        function findUserById(userId) {
             for (var i in users) {
-                if (users[i]._id === id) {
-                    users[i].firstName = newUser.firstName;
-                    users[i].lastName = newUser.lastName;
-                    return true;
+                if (users[i]._id === userId) {
+                    return users[i];
                 }
             }
-            return false;
+            return null;
         }
 
-        function createUser(user) {
-
-        }
-
-        function deleteUser(id) {
-
+        function findUserByUsername(username) {
+            for (var i in users) {
+                if (users[i].username === username) {
+                    return users[i];
+                }
+            }
+            return null;
         }
 
         function findUserByUsernameAndPassword(username, password) {
@@ -54,13 +58,20 @@
 
         }
 
-        function findUserById(id) {
+        function updateUser(userId, newUser) {
             for (var i in users) {
-                if (users[i]._id === id) {
-                    return users[i];
+                if (users[i]._id === userId) {
+                    users[i].firstName = newUser.firstName;
+                    users[i].lastName = newUser.lastName;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
+
+        function deleteUser(userId) {
+
+        }
+
     }
 })();

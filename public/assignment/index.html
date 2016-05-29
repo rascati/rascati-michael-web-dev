@@ -8,19 +8,28 @@
     <link href="css/style.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src="views/user/login.controller.client.js"></script>
-    <script src="views/user/profile.controller.client.js"></script>
-    <script src="views/website/website-list.controller.client.js"></script>
-    <script src="views/website/website-edit.controller.client.js"></script>
-    <script src="views/widget/widget-list.controller.client.js"></script>
+
+    <script src="services/page.service.client.js"></script>
     <script src="services/user.service.client.js"></script>
     <script src="services/website.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+
+    <script src="views/page/page-list.controller.client.js"></script>
+
+    <script src="views/user/login.controller.client.js"></script>
+    <script src="views/user/register.controller.client.js"></script>
+    <script src="views/user/profile.controller.client.js"></script>
+
+    <script src="views/website/website-list.controller.client.js"></script>
+    <script src="views/website/website-edit.controller.client.js"></script>
+
+    <script src="views/widget/widget-list.controller.client.js"></script>
+    <script src="views/widget/widget-chooser.controller.client.js"></script>
 </head>
 <body>
-    <div ng-view class="container">
-        <!--h1>test</h1-->
-    </div>
+    <div ng-view class="container"></div>
 </body>
 </html>

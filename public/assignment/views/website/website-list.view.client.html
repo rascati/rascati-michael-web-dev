@@ -14,13 +14,29 @@
     </div>
 </nav>
 
+<ul class="list-group">
+    <li ng-repeat="website in model.websites" class="list-group-item">
+
+        <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+            {{website.name}}
+        </a>
+
+        <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
+
+            <span class="glyphicon glyphicon-cog"></span>
+            <span class="glyphicon glyphicon-play"></span>
+
+        </a>
+    </li>
+</ul>
+
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
             <a class="navbar-brand" href="#">
             </a>
             <p class="navbar-text pull-right">
-                <a href="../user/profile.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-user">
                     </span>
                 </a>
@@ -28,15 +44,3 @@
         </div>
     </div>
 </nav>
-
-<div class="container">
-    <ul class="list-group">
-        <li ng-repeat="website in model.websites" class="list-group-item">
-            <a href="../page/page-list.html">{{website.name}}</a>
-            <a href="#/user/{{website._developerId}}/website/{{website._id}}" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-                <span class="glyphicon glyphicon-play"></span>
-            </a>
-        </li>
-    </ul>
-</div>

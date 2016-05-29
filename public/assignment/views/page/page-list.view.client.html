@@ -1,0 +1,128 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="../website/website-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Pages
+            </a>
+            <p class="navbar-text pull-right">
+                <!--a href="#/user/page-new.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus">
+                    </span>
+                </a-->
+            </p>
+        </div>
+    </div>
+</nav>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <a class="navbar-brand" href="#">
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <span class="glyphicon glyphicon-user">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+<ul class="list-group">
+
+    <div class="form-group">
+        <label for="name">Website Name</label>
+        <input ng-model="model.page.name"
+               type="text"
+               class="form-control"
+               value="{{model.pages}}"
+               id="name"
+               placeholder="Name">
+    </div>
+    {{model.pages}}
+    <li ng-repeat="page in model.pages" class="list-group-item">
+        hello
+        <a href="#/user/{{pages.websiteId}}/website/{{page.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
+        <a href="#/user/{{page.developerId}}/website/{{page.websiteId}}/page/{{page._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+    </li>
+</ul>
+
+<!--div class="container">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="../widget/widget-list.html">Blog Post</a>
+            <!--a href="website-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-play">
+                </span>
+            </a>
+            <a href="page-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+            </a>
+
+        </li>
+
+
+        <li class="list-group-item">
+            <a href="../widget/widget-list.html">Blogs</a>
+            <!--a href="website-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-play">
+                </span>
+            </a>
+            <a href="page-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+            </a>
+
+        </li>
+
+        <li class="list-group-item">
+            <a href="../widget/widget-list.html">Home</a>
+            <!--a href="website-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-play">
+                </span>
+            </a>
+            <a href="page-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+            </a>
+
+        </li>
+
+        <li class="list-group-item">
+            <a href="../widget/widget-list.html">About</a>
+            <!--a href="website-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-play">
+                </span>
+            </a>
+            <a href="page-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+            </a>
+
+        </li>
+
+        <li class="list-group-item">
+            <a href="../widget/widget-list.html">Contact Us</a>
+            <!--a href="website-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-play">
+                </span>
+            </a>
+            <a href="page-edit.html" class="pull-right">
+                <span class="glyphicon glyphicon-cog">
+                </span>
+            </a>
+
+        </li>
+    </ul>
+</div-->

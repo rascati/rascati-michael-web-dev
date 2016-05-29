@@ -12,16 +12,25 @@
                 controllerAs: "model"
             })
             .when("/register", {
-                templateUrl: "views/user/register.view.client.html"
+                templateUrl: "views/user/register.view.client.html",
+                controller: "RegisterController",
+                controllerAs: "model"
             })
-            .when("/profile/:id", {
+            //maybe should be /user/:id
+            .when("/user/:id", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
-            })//website routes
+            })
+            //website routes
             .when("/user/:userId/website", {
                 templateUrl: "views/website/website-list.view.client.html",
                 controller: "WebsiteListController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/new", {
+                templateUrl: "views/website/website-new.view.client.html",
+                controller: "NewWebsiteController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId", {
@@ -30,6 +39,22 @@
                 controllerAs: "model"
             })
             //page routes
+            //page list, new page, edit page
+            .when("/user/:userId/website/:websiteId/page", {
+                templateUrl: "views/page/page-list.view.client.html",
+                controller: "PageListController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/new", {
+                templateUrl: "views/page/page-new.view.client.html",
+                controller: "NewPageController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId", {
+                templateUrl: "views/page/page-edit.view.client.html",
+                controller: "EditPageController",
+                controllerAs: "model"
+            })
 
             //widget routes
             .when("/user/:uid/website/:wid/page/:pid/widget", {
