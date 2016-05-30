@@ -7,6 +7,7 @@
         var vm = this;
         var userId = $routeParams.userId;
         vm.userId = userId;
+        
         vm.createWebsite = createWebsite;
 
         function createWebsite(name, description) {

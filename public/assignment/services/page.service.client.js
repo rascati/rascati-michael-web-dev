@@ -21,24 +21,24 @@
         return api;
 
         function createPage(websiteId, page) {
+            //works: page.websiteId = websiteId;
+            //       pages.push(page);
+            
             var newPage = {
                 _id: (new Date()).getTime(),
                 name: page,
                 websiteId: websiteId
-            }
+            };
             pages.push(newPage);
             return newPage;
         }
 
         function findPageByWebsiteId(websiteId) {
             var result = [];
-            //console.log("websiteId: " + websiteId);
 
             for (var i in pages) {
-                //console.log(pages[i]);
                 if (pages[i].websiteId === websiteId) {
                     result.push(pages[i]);
-                    //console.log(pages[i]);
                 }
             }
             return result;
