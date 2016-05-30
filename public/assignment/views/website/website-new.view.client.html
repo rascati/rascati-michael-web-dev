@@ -11,24 +11,13 @@
                     </span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website">
                 New Website
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.createWebsite(name, description)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
-
-                <!--a href="#/user/{{model.userId}}/website" class="navbar-link">
-                    <span class="glyphicon glyphicon-ok">
-                    </span>
-                </a>
-
-                <a ng-click="model.updateUser()" class="navbar-link">
-                  <span class="glyphicon glyphicon-ok">
-                  </span>
-                </a-->
-
             </p>
         </div>
     </div>
@@ -57,8 +46,6 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
-            <a class="navbar-brand" href="#">
-            </a>
             <p class="navbar-text pull-right">
                 <a href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user">
