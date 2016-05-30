@@ -46,6 +46,8 @@
 
         function findWebsiteById(websiteId) {
             for (var i in websites) {
+
+                console.log("website: " + websites[i]._id);
                 if (websites[i]._id === websiteId) {
                     return websites[i];
                 }

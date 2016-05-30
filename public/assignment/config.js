@@ -17,7 +17,6 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            //maybe should be /user/:id
             .when("/user/:userId", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",

@@ -15,9 +15,9 @@
 
         function init() {
             vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            console.log("website id in controller: " + vm.websiteId);
         }
         init();
-
 
         function updateWebsite(website) {
             WebsiteService.updateWebsite(vm.websiteId, website);

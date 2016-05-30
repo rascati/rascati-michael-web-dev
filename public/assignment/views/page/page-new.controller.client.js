@@ -23,23 +23,6 @@
             } else {
                 vm.error = "Please fill in every field";
             }
-
-            /*works
-            if (name && title) {
-                var id = (new Date()).getTime();
-
-                var newPage = {
-                    _id: id,
-                    name: name,
-                    websiteId: vm.websiteId
-                };
-
-                PageService.createPage(vm.websiteId, newPage);
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page")
-            } else {
-                vm.error = "Please fill in every field";
-            }//*/
-
         }
     }
 })();

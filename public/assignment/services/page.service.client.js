@@ -21,9 +21,6 @@
         return api;
 
         function createPage(websiteId, page) {
-            //works: page.websiteId = websiteId;
-            //       pages.push(page);
-            
             var newPage = {
                 _id: (new Date()).getTime(),
                 name: page,
@@ -72,6 +69,5 @@
             }
             return false;
         }
-        
     }
 })();
