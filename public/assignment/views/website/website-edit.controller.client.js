@@ -16,6 +16,7 @@
         function init() {
             vm.website = WebsiteService.findWebsiteById(vm.websiteId);
             console.log("website id in controller: " + vm.websiteId);
+            console.log("website name: " + vm.website);
         }
         init();
 

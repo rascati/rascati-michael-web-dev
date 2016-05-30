@@ -11,15 +11,22 @@
         vm.createWebsite = createWebsite;
 
         function createWebsite(website) {
-            if (website.name && website.description) {
-                var newWebsite = WebsiteService.createWebsite(vm.userId, website.name, website.description);
-                if (newWebsite) {
-                    $location.url("/user/" + vm.userId + "/website");
-                } else {
-                    vm.error = "Could not create website";
-                }
+            if (website.name) {
+                var newID = (new Date()).getTime();
+
+                var website = {
+                    _id: newID,
+                    name: website.name,
+                    developerId: vm.userId
+                };
+                console.log("name: " + website.name);
+                console.log("dev ID from new controller: " + website.developerId);
+
+                WebsiteService.createWebsite(vm.userId, website);
+                $location.url("/user/" + vm.userId + "/website");
+
             } else {
-                vm.error = "Please fill in every field";
+                vm.error = "Please name the website";
             }
         }
     }

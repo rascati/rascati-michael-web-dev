@@ -12,13 +12,13 @@
         var pageId = $routeParams.pageId;
         vm.pageId = pageId;
 
+        vm.getTrustedHtml = getTrustedHtml;
+        vm.getTrustedUrl = getTrustedUrl;
+
         function init() {
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
-
-        vm.getTrustedHtml = getTrustedHtml;
-        vm.getTrustedUrl = getTrustedUrl;
 
         function getTrustedHtml(widget) {
             var html = $sce.trustAsHtml(widget.text);

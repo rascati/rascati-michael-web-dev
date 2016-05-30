@@ -29,7 +29,7 @@
 
         function findUserById(userId) {
             for (var i in users) {
-                if (users[i]._id === userId) {
+                if (users[i]._id == userId) {
                     return users[i];
                 }
             }
@@ -38,7 +38,7 @@
 
         function findUserByUsername(username) {
             for (var i in users) {
-                if (users[i].username === username) {
+                if (users[i].username == username) {
                     return users[i];
                 }
             }
@@ -47,7 +47,7 @@
 
         function findUserByUsernameAndPassword(username, password) {
             for (var i in users) {
-                if (users[i].username === username && users[i].password === password) {
+                if (users[i].username == username && users[i].password === password) {
                     return users[i];
                  }
             }
@@ -56,7 +56,7 @@
 
         function updateUser(userId, newUser) {
             for (var i in users) {
-                if (users[i]._id === userId) {
+                if (users[i]._id == userId) {
                     users[i].firstName = newUser.firstName;
                     users[i].lastName = newUser.lastName;
                     return true;
@@ -67,7 +67,7 @@
 
         function deleteUser(userId) {
             for (var i in users) {
-                if (users[i]._id === userId) {
+                if (users[i]._id == userId) {
                     users.splice(i, 1);
                     return true;
                 }

@@ -40,11 +40,8 @@
     </div>
 </form>
 
-
-<a class="btn btn-danger btn-block"
-   href="website-list.html">Delete</a>
-
-<!--ng-click="deleteWebsite()"-->
+<a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block"
+   href="#/user/{{model.userId}}/website">Delete</a>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

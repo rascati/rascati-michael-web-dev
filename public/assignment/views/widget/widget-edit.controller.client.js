@@ -13,8 +13,20 @@
         vm.pageId = pageId;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetByPageId(vm.pageId);
+            vm.widget = WidgetService.findWidgetByPageId(vm.pageId);
         }
         init();
+
+        vm.updateWidget = updateWidget;
+
+        function updateWidget() {
+            var result = WidgetService.updateWidget(vm.widget._id, widget);
+            if (result) {
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+            } else {
+                vm.error = "Could not update widget"
+            }
+        }
+
     }
 })();

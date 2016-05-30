@@ -23,15 +23,19 @@
         };
         return api;
 
-        function createWebsite(devId, name, desc) {
-            var newWebsite = {
+        function createWebsite(userId, website) {
+            website.developerId = userId;
+            websites.push(website);
+
+
+            /*var newWebsite = {
                 _id: (new Date()).getTime(),
                 name: name,
-                description: desc,
                 developerId: devId
             };
             websites.push(newWebsite);
-            return newWebsite;
+            console.log("websites:" + )
+            return newWebsite;*/
         }
 
         function findWebsitesForUser(userId) {
@@ -48,7 +52,7 @@
             for (var i in websites) {
 
                 console.log("website: " + websites[i]._id);
-                if (websites[i]._id === websiteId) {
+                if (websites[i]._id == websiteId) {
                     return websites[i];
                 }
             }
@@ -67,7 +71,7 @@
 
         function deleteWebsite(websiteId) {
             for (var i in websites) {
-                if (websites[i]._id === websiteId) {
+                if (websites[i]._id == websiteId) {
                     websites.splice(i, 1);
                     return true;
                 }
