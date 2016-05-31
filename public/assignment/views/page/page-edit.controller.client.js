@@ -21,7 +21,7 @@
         vm.deletePage = deletePage;
 
         function updatePage() {
-            console.log(vm.page.name);
+            //console.log(vm.page.name);
             var result = PageService.updatePage(vm.pageId, vm.page);
             if (result) {
                 $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");

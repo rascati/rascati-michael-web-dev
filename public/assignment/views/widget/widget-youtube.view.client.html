@@ -2,16 +2,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="widget-list.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-list.html" class="navbar-link">
+                <a ng-click="model.updateWidget()" class="navbar-link">
                     <span class="glyphicon glyphicon-ok">
                     </span>
                 </a>
@@ -20,6 +20,7 @@
     </div>
 </nav>
 
+<!--"_id": "678", "widgetType": "YOUTUBE", "pageId": "321",  "width": "100%",  "url": "https://youtu.be/jwu2y9x5OlM"},-->
 
 <form>
     <div class="form-group">
@@ -27,7 +28,6 @@
         <input type="text"
                class="form-control"
                id="name"
-               value="Gordon Ramsay"
                placeholder="Widget Name">
     </div>
     <div class="form-group">
@@ -39,30 +39,30 @@
     </div>
     <div class="form-group">
         <label for="size">URL</label>
-        <input type="url"
+        <input ng-model="model.widget.url"
+               type="url"
                class="form-control"
-               value="https://www.youtube.com/embed/jwu2y9x5OlM"
                id="size"
-               placeholder="Widget Size">
+               placeholder="Widget Link">
     </div>
     <div class="form-group">
         <label for="width">Width</label>
-        <input type="text"
+        <input ng-model="model.widget.width"
+               type="text"
                class="form-control"
-               value="100%"
                id="width"
                placeholder="Widget Width">
     </div>
 </form>
 
 <a class="btn btn-danger btn-block"
-   href="widget-list.html">Delete</a>
+   ng-click="model.deleteWidget()">Delete</a>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-user">
                     </span>
                 </a>

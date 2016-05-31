@@ -19,8 +19,7 @@
                     name: website.name,
                     developerId: vm.userId
                 };
-                console.log("name: " + website.name);
-                console.log("dev ID from new controller: " + website.developerId);
+                //console.log("name: " + website.name);
 
                 WebsiteService.createWebsite(vm.userId, website);
                 $location.url("/user/" + vm.userId + "/website");

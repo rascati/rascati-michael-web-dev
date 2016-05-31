@@ -26,7 +26,6 @@
         }
         return api;
 
-        //widget has: _id, widgetType, pageId, size, text
         function createWidget(pageId, widget) {
             widget.pageId = pageId;
             widgets.push(widget);
@@ -36,7 +35,7 @@
             var result = [];
             for (var i in widgets) {
                 //console.log(widgets[i]);
-                if (widgets[i].pageId === pageId) {
+                if (widgets[i].pageId == pageId) {
                     result.push(widgets[i]);
                 }
             }
@@ -45,7 +44,7 @@
 
         function findWidgetById(widgetId) {
             for (var i in widgets) {
-                if (widgets[i]._id === widgetId) {
+                if (widgets[i]._id == widgetId) {
                     return widgets[i];
                 }
             }
@@ -54,7 +53,7 @@
 
         function updateWidget(widgetId, widget) {
             for (var i in widgets) {
-                if (widgets[i]._id === widgetId) {
+                if (widgets[i]._id == widgetId) {
                     widgets[i] = widget;
                     return true;
                 }
@@ -64,7 +63,7 @@
 
         function deleteWidget(widgetId) {
             for (var i in widgets) {
-                if (widgets[i]._id === widgetId) {
+                if (widgets[i]._id == widgetId) {
                     widgets.splice(i, 1);
                     return true;
                 }

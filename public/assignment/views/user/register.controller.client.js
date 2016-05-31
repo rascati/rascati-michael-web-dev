@@ -26,7 +26,7 @@
                                 firstName: username + " F Name",
                                 lastName: username + " L Name"
                             }
-                            console.log("username: " + username);
+                            //console.log("username: " + username);
 
                             UserService.createUser(newUser);
                             $location.url("/user/" + newUser._id);

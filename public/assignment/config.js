@@ -5,8 +5,6 @@
 
     function Config($routeProvider) {
         $routeProvider
-            //user routes
-            
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
                 controller: "LoginController",
@@ -22,7 +20,6 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
-            //website routes
             .when("/user/:userId/website", {
                 templateUrl: "views/website/website-list.view.client.html",
                 controller: "WebsiteListController",
@@ -38,7 +35,6 @@
                 controller: "EditWebsiteController",
                 controllerAs: "model"
             })
-            //page routes
             //page list, new page, edit page
             .when("/user/:userId/website/:websiteId/page", {
                 templateUrl: "views/page/page-list.view.client.html",
@@ -55,8 +51,6 @@
                 controller: "EditPageController",
                 controllerAs: "model"
             })
-
-            //widget routes
             .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
                 templateUrl: "views/widget/widget-list.view.client.html",
                 controller: "WidgetListController",
@@ -68,11 +62,10 @@
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", {
-                templateUrl: "view/widget/widget-edit.view.client.html",
+                templateUrl: "views/widget/widget-edit.view.client.html",
                 controller: "EditWidgetController",
                 controllerAs: "model"
             })
-
             .otherwise({
                 redirectTo: "/login"
             });

@@ -2,39 +2,25 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="widget-list.html" class="navbar-link">
-                                    <span class="glyphicon glyphicon-chevron-left">
-                                    </span>
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-list.html" class="navbar-link">
-                                    <span class="glyphicon glyphicon-ok">
-                                    </span>
+                <a ng-click="model.updateWidget()" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok">
+                    </span>
                 </a>
             </p>
         </div>
     </div>
 </nav>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-footer">
-            <a class="navbar-brand" href="#">
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="../user/profile.view.client.html" class="navbar-link">
-                                    <span class="glyphicon glyphicon-user">
-                                    </span>
-                </a>
-            </p>
-        </div>
-    </div>
-</nav>
-
+<!--"_id": "345", "widgetType": "IMAGE",   "pageId": "321",  "width": "100%",  "url": "http://lorempixel.com/400/200/"},-->
 
 <form>
     <div class="form-group">
@@ -42,7 +28,6 @@
         <input type="text"
                class="form-control"
                id="name"
-               value="SpaceX"
                placeholder="Widget Name">
     </div>
     <div class="form-group">
@@ -54,15 +39,15 @@
     </div>
     <div class="form-group">
         <label for="size">URL</label>
-        <input type="url"
+        <input ng-model="model.widget.url"
                class="form-control"
                id="size"
-               value="http://www.spacex.com/sites/spacex/files/itl_streak.jpg"
-               placeholder="Widget Size">
+               placeholder="Widget Link">
     </div>
     <div class="form-group">
         <label for="width">Width</label>
-        <input type="text"
+        <input ng-model="model.widget.width"
+               type="text"
                class="form-control"
                id="width"
                value="100%"
@@ -73,12 +58,24 @@
         <input type="file"
                class="form-control"
                id="upload"
-               value="100%"
                placeholder="Widget Width">
     </div>
 </form>
 
 <a class="btn btn-primary btn-block"
-   href="widget-list.html">Upload Image</a>
+   href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Upload Image</a>
 <a class="btn btn-danger btn-block"
-   href="widget-list.html">Delete</a>
+   ng-click="model.deleteWidget()">Delete</a>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <span class="glyphicon glyphicon-user">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>

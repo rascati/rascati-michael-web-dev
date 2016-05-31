@@ -26,16 +26,6 @@
         function createWebsite(userId, website) {
             website.developerId = userId;
             websites.push(website);
-
-
-            /*var newWebsite = {
-                _id: (new Date()).getTime(),
-                name: name,
-                developerId: devId
-            };
-            websites.push(newWebsite);
-            console.log("websites:" + )
-            return newWebsite;*/
         }
 
         function findWebsitesForUser(userId) {
@@ -50,8 +40,7 @@
 
         function findWebsiteById(websiteId) {
             for (var i in websites) {
-
-                console.log("website: " + websites[i]._id);
+                //console.log("website: " + websites[i]._id);
                 if (websites[i]._id == websiteId) {
                     return websites[i];
                 }
