@@ -5,9 +5,39 @@
 
     function RegisterController($location, UserService) {
         var vm = this;
+
         vm.register = register;
 
         function register(username, password, verify) {
+            UserService
+                .createUser(username, password)
+                .then(
+                    function(response) {
+                        var user = response.data;
+                        $location.url("/user/" + user._id);
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                );
+        }
+
+        /*function register(username, password, verify) {
+            //do as much validation on client side before it reaches the server
+            UserService
+                .createUser(username, password)
+                .then(
+                    function(response) {
+                        //successfully added to community -> goto profile page. new user passed back w userId so we can nav to the profile page
+                        var user = response.data;
+                        $location.url("/user/" + user._id);
+                    },
+                    function(error) {
+                        //can only validate the usernames, password matches on the server.
+                        vm.error = error.data;
+                    }
+                );
+
             if (username) {
                 if (UserService.findUserByUsername(username)) {
                     vm.error = "This username is taken";
@@ -40,6 +70,6 @@
             } else {
                 vm.error = "Username cannot be blank";
             }
-        }
+        }*/
     }
 })();

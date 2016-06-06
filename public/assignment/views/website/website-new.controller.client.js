@@ -11,7 +11,22 @@
         vm.createWebsite = createWebsite;
 
         function createWebsite(website) {
-            if (website.name) {
+            WebsiteService
+                .createWebsite(vm.userId, website)
+                .then(
+                    function(response) {
+                        var newWebsite = response.data;
+                        
+                        if (newWebsite) {
+                            $location.url("/user/" + vm.userId + "/website");
+                        }
+                    },
+                    function(error) {
+                        vm.error = "Unable to create website";
+                    }
+                );
+
+            /*if (website.name) {
                 var newID = (new Date()).getTime();
 
                 var website = {
@@ -26,7 +41,7 @@
 
             } else {
                 vm.error = "Please name the website";
-            }
+            }*/
         }
     }
 })();

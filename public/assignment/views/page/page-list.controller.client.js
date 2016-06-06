@@ -12,7 +12,12 @@
 
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(websiteId);
+            PageService
+                .findPageByWebsiteId(websiteId)
+                .then(function(response) {
+                    vm.pages = response.data;
+                });
+            //vm.pages = PageService.findPageByWebsiteId(websiteId);
             //console.log(vm.pages);
         }
         init();

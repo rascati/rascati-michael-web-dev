@@ -16,7 +16,12 @@
         vm.getTrustedUrl = getTrustedUrl;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+            WidgetService
+                .findWidgetsByPageId(vm.pageId)
+                .then(function(response) {
+                    vm.widgets = response.data;
+                });
+            //vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
 
@@ -31,5 +36,8 @@
             var url = "https://www.youtube.com/embed/" + id;
             return $sce.trustAsResourceUrl(url);
         }
+
+        $(".widget-container")
+            .sortable({axis: "y"});
     }
 })();

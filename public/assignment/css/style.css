@@ -7,6 +7,10 @@ body {
     padding-bottom: 60px;
 }
 
+.btn {
+    margin-bottom: 5px;
+}
+
 p.navbar-text.pull-right {
     margin-right: 15px;
 }

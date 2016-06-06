@@ -14,16 +14,39 @@
         vm.deleteWebsite = deleteWebsite;
 
         function init() {
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            WebsiteService
+                .findWebsiteById(vm.websiteId)
+                .then(function(response) {
+                    vm.website = response.data;
+                });
+            //vm.website = WebsiteService.findWebsiteById(vm.websiteId);
         }
         init();
 
         function updateWebsite(website) {
-            WebsiteService.updateWebsite(vm.websiteId, website);
+            WebsiteService
+                .updateWebsite(vm.websiteId, website)
+                .then(
+                    function(response) {
+                        vm.success = "Website successfully updated";
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                );
         }
 
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(vm.websiteId);
+            WebsiteService
+                .deleteWebsite(vm.websiteId)
+                .then(
+                    function(response) {
+                        vm.success = "Website successfully updated";
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                );
         }
     }
 })();
