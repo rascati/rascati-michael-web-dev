@@ -35,6 +35,7 @@
                 );
         }
 
+        //checkmark invokes put request. to userserviceserver
         function updateUser() {
             UserService
                 .updateUser(id, vm.user)

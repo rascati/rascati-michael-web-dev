@@ -25,7 +25,9 @@ module.exports = function(app) {
 
     function createWidget(req, res) {
         var newWidget = req.body;
+
         newWidget._id = (new Date()).getDate() + "";
+        console.log(newWidget);
         widgets.push(newWidget);
         res.json(newWidget);
     }
@@ -33,14 +35,14 @@ module.exports = function(app) {
     function findWidgetsByPageId(req, res) {
         var pageId = req.params.pageId;
         var result = [];
-        console.log("Page ID: " + pageId);
+       // console.log("Page ID: " + pageId);
 
         for (var i in widgets) {
             if (widgets[i].pageId === pageId) {
                 result.push(widgets[i]);
             }
         }
-        console.log(result);
+       // console.log(result);
         res.send(result);
     }
 

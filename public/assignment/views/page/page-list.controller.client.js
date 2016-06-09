@@ -10,11 +10,11 @@
         var websiteId = $routeParams.websiteId;
         vm.websiteId = websiteId;
 
-
         function init() {
             PageService
-                .findPageByWebsiteId(websiteId)
+                .findPageByWebsiteId(vm.websiteId)
                 .then(function(response) {
+                    console.log("Page List: " + response.data);
                     vm.pages = response.data;
                 });
             //vm.pages = PageService.findPageByWebsiteId(websiteId);

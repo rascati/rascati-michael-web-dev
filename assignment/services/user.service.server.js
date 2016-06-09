@@ -108,105 +108,105 @@ module.exports = function(app) {
 
 
     /*
-    app.post("/api/user", createUser);
-    app.get("/api/user", getUsers);//reading a user
-    app.get("/api/user/:userId", findUserById);//reading a user
-    //app.get("/api/user/:username", findUserByUsername);//won't work because this matches to the same URL pattern as the one above.
-    app.put("/api/user/:userId", updateUser);
-    app.delete("/api/user/:userId", deleteUser);//listen for delete, invoke url delete user
-    */
-/*
-    function createUser(req, res) {
-        var newUser = req.body;
+     app.post("/api/user", createUser);
+     app.get("/api/user", getUsers);//reading a user
+     app.get("/api/user/:userId", findUserById);//reading a user
+     //app.get("/api/user/:username", findUserByUsername);//won't work because this matches to the same URL pattern as the one above.
+     app.put("/api/user/:userId", updateUser);
+     app.delete("/api/user/:userId", deleteUser);//listen for delete, invoke url delete user
+     */
+    /*
+     function createUser(req, res) {
+     var newUser = req.body;
 
-        for (var i in users) {
-            if (users[i].username === newUser.username) {
-                res.status(400).send("Username " + newUser.username + " is already in use");//username is taken
-                return;
-            }
-        }
+     for (var i in users) {
+     if (users[i].username === newUser.username) {
+     res.status(400).send("Username " + newUser.username + " is already in use");//username is taken
+     return;
+     }
+     }
 
-        newUser._id = (new Date()).getTime() + "";
-        users.push(newUser);
-        res.json(newUser);//we are expecting the newUser object to be sending. (it is as a JSON) //successful creation of new user.
-    }
+     newUser._id = (new Date()).getTime() + "";
+     users.push(newUser);
+     res.json(newUser);//we are expecting the newUser object to be sending. (it is as a JSON) //successful creation of new user.
+     }
 
-    function deleteUser(req, res) {
-        var userId = req.params(userId);
+     function deleteUser(req, res) {
+     var userId = req.params(userId);
 
-        //code originally living in user.service.client.js
-        for (var i in users) {
-            if (users[i]._id == userId) {//userId being passed is from the URL
-                users.splice(i, 1);//at pos i splice 1 element
-                res.send(200);
-                return;
-            }
-        }
-        res.status(404).send("Unable to remove user with ID: " + userId);
-    }
+     //code originally living in user.service.client.js
+     for (var i in users) {
+     if (users[i]._id == userId) {//userId being passed is from the URL
+     users.splice(i, 1);//at pos i splice 1 element
+     res.send(200);
+     return;
+     }
+     }
+     res.status(404).send("Unable to remove user with ID: " + userId);
+     }
 
-    function updateUser(req, res) {
-        var userId = req.params(userId);
-        var newUser = req.body; //extract newUser from body of JSON object
+     function updateUser(req, res) {
+     var userId = req.params(userId);
+     var newUser = req.body; //extract newUser from body of JSON object
 
 
-        //code originally living in user.service.client.js
-        for (var i in users) {
-            if (users[i]._id == userId) {//userId being passed is from the URL
-                users[i].firstName = newUser.firstName;
-                users[i].lastName = newUser.lastName;//respond w a 200 to say everything went ok
-                res.send(200);
-                return;
-            }
-        }
-        res.status(400).send("User with ID: " + userId + "not found");//400 is generic error
-    }
+     //code originally living in user.service.client.js
+     for (var i in users) {
+     if (users[i]._id == userId) {//userId being passed is from the URL
+     users[i].firstName = newUser.firstName;
+     users[i].lastName = newUser.lastName;//respond w a 200 to say everything went ok
+     res.send(200);
+     return;
+     }
+     }
+     res.status(400).send("User with ID: " + userId + "not found");//400 is generic error
+     }
 
-    //we embedded functions in the app.get in app.js (anonymous function). this is another way to do it.
-    function getUsers(req, res) {
-        //base url of /api/user/, but queries are different, so it will parse through queries
-        var username = req.query["username"];
-        var password = req.query["password"];
+     //we embedded functions in the app.get in app.js (anonymous function). this is another way to do it.
+     function getUsers(req, res) {
+     //base url of /api/user/, but queries are different, so it will parse through queries
+     var username = req.query["username"];
+     var password = req.query["password"];
 
-        if (username && password) {
-            findUserByCredentials(username, password, res);//use findUserByCredentials
-        } else if (username) {
-            findUserByUsername(username, res);//can generate a response with res
-        } else {
-            res.send(users);//typically would check for credentials
-        }
-    }
+     if (username && password) {
+     findUserByCredentials(username, password, res);//use findUserByCredentials
+     } else if (username) {
+     findUserByUsername(username, res);//can generate a response with res
+     } else {
+     res.send(users);//typically would check for credentials
+     }
+     }
 
-    function findUserByCredentials(username, password, res) {
-        for (var u in users) {
-            if (users[u].username === username && users[u].password === password) {
-                res.send(users[u]);
-                return;
-            }
-        }
-        //send null if nothing is available
-        //res.send({});
-        res.send(403);//http error code: you are not authorized.
-    }
+     function findUserByCredentials(username, password, res) {
+     for (var u in users) {
+     if (users[u].username === username && users[u].password === password) {
+     res.send(users[u]);
+     return;
+     }
+     }
+     //send null if nothing is available
+     //res.send({});
+     res.send(403);//http error code: you are not authorized.
+     }
 
-    function findUserByUsername(username, res) {
-        for (var u in users) {
-            if (users[u].username === username) {
-                res.send(users[u]);
-                return;
-            }
-        }
-        res.send({});
-    }
+     function findUserByUsername(username, res) {
+     for (var u in users) {
+     if (users[u].username === username) {
+     res.send(users[u]);
+     return;
+     }
+     }
+     res.send({});
+     }
 
-    function findUserById(req, res) {
-        var userId = req.params.userId;//userId is from app.get line where :userId is the variable name
-        for (var i in users) {
-            if (userId === users[i]._id) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
-    }*/
+     function findUserById(req, res) {
+     var userId = req.params.userId;//userId is from app.get line where :userId is the variable name
+     for (var i in users) {
+     if (userId === users[i]._id) {
+     res.send(users[i]);
+     return;
+     }
+     }
+     res.send({});
+     }*/
 };

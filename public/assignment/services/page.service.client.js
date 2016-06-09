@@ -19,7 +19,11 @@
         function createPage(websiteId, page) {
             var url = "/api/website/" + websiteId + "/page";
             console.log("website id for page: " + websiteId);
-            page.websiteId = websiteId;
+
+            console.log("page client");
+            console.log(page);
+            //page.websiteId = websiteId;
+            
             return $http.post(url, page);
 
             /*var newPage = {

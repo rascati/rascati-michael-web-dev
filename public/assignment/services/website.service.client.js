@@ -15,8 +15,11 @@
         return api;
 
         function createWebsite(userId, website) {
+            //console.log(userId);
+            //console.log(website);
+            //website.developerId = userId;
+            
             var url = "/api/user/" + userId + "/website";
-            website.developerId = userId;
             return $http.post(url, website);
         }
         

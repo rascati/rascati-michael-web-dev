@@ -13,9 +13,8 @@
         vm.createPage = createPage;
 
         function createPage(name, title) {
-
             PageService
-                .createPage(vm.websiteId, name)
+                .createPage(vm.websiteId, {name : name , title : title})
                 .then(
                     function(response) {
                         var newPage = response.data;

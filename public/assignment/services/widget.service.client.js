@@ -18,6 +18,7 @@
 
         function createWidget(pageId, widget) {
             var url = "/api/page/" + pageId + "/widget";
+            console.log("pageID from widgetserviceclient: " + pageId);
             widget.pageId = pageId;
             return $http.post(url, widget);
             //widget.pageId = pageId;

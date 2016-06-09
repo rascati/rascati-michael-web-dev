@@ -1,4 +1,7 @@
-module.exports = function(app) {
+module.exports = function(app/*, models*/) {
+
+    //var websiteModel = models.websiteModel;
+
 
     var websites = [
         { "_id": "123", "name": "Facebook",    "developerId": "456" },
@@ -17,31 +20,81 @@ module.exports = function(app) {
 
     
     function createWebsite(req, res) {
+
+        var userId = req.params.userId;
+        console.log("req.body.name: " + req.body.name);
+        //console.log("req.body: " + req.body);
+
+        var nw = {
+            _id:(new Date()).getTime() + "",
+            name: req.body.name,
+            developerId: userId
+        };
+        //console.log(nw);
+        
         //check if website doesn't have a name here?
-        var newWebsite = req.body;
-        newWebsite._id = (new Date()).getTime() + "";
-        websites.push(newWebsite);
-        res.json(newWebsite);
+
+        websites.push(nw);
+        res.json(nw);
     }
+        // var newWebsite = req.body;
+        // newWebsite._id=
+        // newWebsite.developerId = userId;
+        // //var website = req.body;
+    // var newWebsite = {
+    //     _id :(new Date()).getTime() + "",
+    //     developerId : userId,
+    //     name : req.body
+    //
+    // };
+        /*
+        websiteModel
+            .createWebsite(userId, website)
+            .then(
+                function(website) {
+                    res.send(200);
+                    //i think this response was res.json(website)
+                },
+                function(error) {
+                    res.status(400).send(error);
+                }
+            )
+
+        */
 
     function findAllWebsitesForUser(req, res) {
         //params.userId "userId" is the :userId in the url. ie, dev id wouldn't work
         var developerId = req.params.userId;
         var result = [];
-        console.log("Dev ID: " + developerId);
+
+
+        /*websiteModel
+            .findAllWebsitesForUser(developerId)
+            .then(
+                function(websites) {
+                    res.json(websites);
+                },
+                function(error) {
+                    
+                }
+            );
+        */
+
+
+       // console.log("Dev ID: " + developerId);
         
         for (var i in websites) {
             if (websites[i].developerId === developerId) {
                 result.push(websites[i]);
             }
         }
-        console.log(result);
+       // console.log(result);
         res.send(result);
     }
 
     function findWebsiteById(req, res) {
         var websiteId = req.params._id;
-
+        
         for (var i in websites) {
             if (websites[i]._id === websiteId) {
                 res.send(websites[i]);

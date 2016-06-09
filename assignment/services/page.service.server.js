@@ -14,8 +14,33 @@ module.exports = function(app) {
 
 
     function createPage(req, res) {
-        var newPage = req.body;
+        //console.log("in the page server");
+        //console.log("Body" + req.body);
+        
+        //req.body.name is undefined
+        var newPage= req.body;
+        console.log("server req.body.name");
+        console.log(req.body.name);
+
         newPage._id = (new Date()).getTime() + "";
+        newPage.name = req.body.name;
+        newPage.websiteId = req.params.websiteId;
+
+        //console.log("body: " + req.body);
+
+        //newPage.websiteId = req.params.websiteId;
+        //var newPage = req.body;
+        //var websiteId = req.params.websiteId;
+
+        // var newPage = {
+        //     _id: (new Date()).getTime() + "",
+        //     name: req.body,
+        //     websiteId: req.params.websiteId
+        // };
+
+        //req.body.name -> undefined
+        //req.body -> {}
+
         pages.push(newPage);
         res.json(newPage);
     }
@@ -23,7 +48,7 @@ module.exports = function(app) {
     function findPageByWebsiteId(req, res) {
         var websiteId = req.params.websiteId;
         var result = [];
-        console.log("Website ID: " + websiteId);
+       // console.log("Website ID: " + websiteId);
 
         for (var i in pages) {
             if (pages[i].websiteId === websiteId) {

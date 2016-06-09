@@ -16,11 +16,13 @@
 
         function createWidget(widgetType) {
             var newID = (new Date()).getTime();
-
+            
             var newWidget = {
                 _id: newID,
                 widgetType: widgetType
             };
+
+            console.log("widgetType from chooser: " + widgetType);
 
             WidgetService
                 .createWidget(vm.pageId, newWidget)

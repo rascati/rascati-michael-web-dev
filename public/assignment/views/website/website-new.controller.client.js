@@ -7,6 +7,8 @@
         var vm = this;
         var userId = $routeParams.userId;
         vm.userId = userId;
+
+        //no init, but have event handler
         
         vm.createWebsite = createWebsite;
 
