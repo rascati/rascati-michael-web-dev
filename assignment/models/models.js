@@ -1,28 +1,20 @@
-/*module.exports = function() {
-    //connect to db
+module.exports = function() {
 
     var mongoose = require("mongoose");
-    mongoose.connect("mongodb://localhost/cs4550summer1");//if mongodb doesn't find the db it will create it
+    mongoose.connect("mongodb://localhost/cs4550summer1");
 
-
-    //all models go in here
-    //each model provides us w api that allows us to interact w users. create them, insert, find them by username etc
-    //
-
-
-    //usermodelserver returns an api that has all the crud functions. so userModel has the api
+    //Connecting to the .model.server.js, returns an API that has all the CRUD functions.
     var userModel = require("./user/user.model.server.js")();
     var websiteModel = require("./website/website.model.server.js")();
     var pageModel = require("./page/page.model.server.js")();
-    var widgetModel = require("./widget/widget.model.server.js")();;
-    
-    //store all the models in the map
+    var widgetModel = require("./widget/widget.model.server.js")();
+
     var models = {
         userModel: userModel,
         websiteModel: websiteModel,
         pageModel: pageModel,
         widgetModel: widgetModel
     };
-    
+
     return models;
-};*/
+}

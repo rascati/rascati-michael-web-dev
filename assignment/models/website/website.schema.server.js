@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");//does this need to be inside the function?.. answer: doesn't matter
+/*var mongoose = require("mongoose");//does this need to be inside the function?.. answer: doesn't matter
 
 module.exports = function() {
 
@@ -14,4 +14,19 @@ module.exports = function() {
 
     return WebsiteSchema;
     //need model that uses the schema to be able to talk to the database
-}
+}*/
+
+module.exports = function() {
+
+    var mongoose = require("mongoose");
+
+    var WebsiteSchema = mongoose.Schema({
+        _user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+        name: String,
+        description: String,
+        pages: {type: mongoose.Schema.Types.Collection, ref: "Page"}, //correct?
+        dateCreated: {type: Date, default: Date.now}
+    }, {collection: "assignment.website"});
+
+    return WebsiteSchema;
+};

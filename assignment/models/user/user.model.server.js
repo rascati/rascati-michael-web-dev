@@ -1,24 +1,19 @@
-/*module.exports = function() {
-    //same exact api in the webservice on the client side. controller receive commands, get sent to client webservice.
-    //that was translated to http and reached the server. now going to data model and interact w database as opposed to a local array
+/*
 
+Same exact API in the User WebService on the client side.
+Controller receives commands, commands get sent to the client WebService
+That was translatted to HTTP and reached the server.
+Now it's going to the data model and interacting with the database
+as opposed to the local array of hardcoded data.
+
+ */
+
+/*
     var UserSchema = require("./user.schema.server.js")();
     //create mongoose model object to talk to db
     var User = mongoose.model("User", UserSchema); //the actual object that will let us talk to DB. has CRUD operations from command line. can now do it through this objc
     //when we say createUser, it will validate that against our schema. validate types ie: dates, error for string/int invalid types
 
-    var api = {
-        createUser: createUser,
-        findUserById: findUserById,
-        findUserByUsername: findUserByUsername,
-        findUserByCredentials: findUserByCredentials,
-        updateUser: updateUser,
-        deleteUser: deleteUser
-    };
-
-    return api;
-
-    //need mongoose to interact w db
     //must declare what a "User" is to us (schema), new file
 
     //pass user instance. probably json object from client, parse from the body. passed to us from server. now save it to db
@@ -33,43 +28,67 @@
         //this is a network connection out to DB server, must wait for db to come back
         //same challenges betw browser and node.js
         //node is also communicating asynchronously with the db
+
+};*/
+
+
+module.exports = function() {
+
+    var mongoose = require("mongoose");
+    
+    var UserSchema = require("./user.schema.server.js")();
+    var User = mongoose.model("User", UserSchema);
+
+    var api = {
+        createUser: createUser,
+        findUserById: findUserById,
+        findUserByUsername: findUserByUsername,
+        findUserByCredentials: findUserByCredentials,
+        updateUser: updateUser,
+        deleteUser: deleteUser
+    };
+    return api;
+
+
+    //Creates a new user instance
+    //Must return to fulfill the asynch call
+    function createUser(user) {
+        return User.create(user);
     }
 
+    //Retrieves a user instance whose _id is equal to parameter userId
     function findUserById(userId) {
-        //when you know there's only 1 thing that matches. also doesn't return an array, it returns a single instance object or NULL
-
         return User.findById(userId);
-
-        //return to fulfill the asynch shit
-        //User.find({_id: userId}); //can find multiple things, everything that matches. but _id is unique
     }
 
+    //Retrieves a user instance whose username is equal to parameter username
     function findUserByUsername(username) {
         return User.findOne({username: username});
     }
 
+    //Retrieves a user instance whose username and password are equal to parameters userId and password
     function findUserByCredentials(username, password) {
         return User.findOne({username: username, password: password});
-
-        //findOne finds only one, not an array
-
-        //provide criteria: User instance matches username+password to username+password params
-        //.find finds all usernames that match. designed to return COLLECTIONS. will also return an array of 1
     }
 
-    function updateUser(id, newUser) {
+    //Updates user instance whose _id is equal to parameter userId
+    //sets first instance of _id's firstName and lastName field to the browser param user.firstName/lastName
+    function updateUser(userId, user) {
         return User.update(
-            {_id: id},
-            {$set :
-                {   //sets first instance of _id's firstName field to the browser param newUser.firstName
-                    firstName: newUser.firstName,
-                    lastName: newUser.lastName
+            {_id: userId},
+            {$set:
+                {
+                    //can't change username
+                    //update email?
+                    firstName: user.firstName,
+                    lastName: user.lastName
                 }
-            }//fields to modify. can't change username
+            }
         );
     }
 
+    //Removes user instance whose _id is equal to parameter userId
     function deleteUser(userId) {
         return User.remove({_id: userId});
     }
-};*/
+};
