@@ -11,6 +11,7 @@ module.exports = function(app, models) {
 
     app.post("/api/user", createUser);
     //app.get("/api/user", getUsers);
+    app.get("/api/user", findUserByCredentials);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
@@ -132,18 +133,21 @@ module.exports = function(app, models) {
         res.status(404).send("Unable to remove user with ID: " + id);*/
     }
 
-    ////////////////////
+    function findUserByCredentials(req, res) {
+        var username = req.query["username"];
+        var password = req.query["password"];
 
-    function findUserByCredentials(username, password, res) {
-        
         userModel
             .findUserByCredentials(username, password)
             .then(
                 function(user) {
                     res.json(user);
+                    console.log('made it to user');
                 },
                 function(error) {
-                    res.status(403).send("Unable to login");
+                    console.log('made it to error'); //never responds with an error, always reaches the function(user) above
+                    console.log(error);
+                    res.status(403).send(error);
                 }
             );
 

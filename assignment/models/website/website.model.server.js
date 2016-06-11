@@ -63,6 +63,10 @@ module.exports = function() {
 
     function createWebsiteForUser(userId, website) {
         website._user = userId;
+        // console.log("user");
+        // console.log(website._user);
+        // console.log("site");
+        // console.log(website);
         return Website.create(website);
     }
 

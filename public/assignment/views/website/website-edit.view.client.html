@@ -19,11 +19,15 @@
         </div>
     </div>
 </nav>
+websiteID: {{model.websiteId}}
+{{model}}
+
+
 
 <form>
     <div class="form-group">
         <label for="name">Website Name</label>
-        <input ng-model="model.website.name"
+        <input ng-model="website.name"
                type="text"
                class="form-control"
                id="name"

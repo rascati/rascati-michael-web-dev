@@ -16,20 +16,9 @@
                 .findWebsitesForUser(vm.userId)
                 .then(function(response) {
                     vm.websites = response.data;
+                    console.log(response.data);
                 });
-
-            //vm.websites = WebsiteService.findWebsitesForUser(userId);
         }
         init();
-
-        /*
-        function init() {
-            UserService
-                .findUserById(id)
-                .then(function(response) {
-                    vm.user = response.data;
-                });
-        }
-        init();*/
     }
 })();
