@@ -10,8 +10,8 @@ module.exports = function() {
         placeholder: String,
         description: String,
         url: String,
-        width: String,
-        height: String,
+        width: String, //string
+        height: String, //string
         rows: Number,
         size: Number,
         class: String,

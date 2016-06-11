@@ -3,11 +3,14 @@ module.exports = function(app) {
     //models. app js receives the models.js, models var contains the map of all the models
     //can interact w any model you want
     //var models = require("./models/models.js")();
+    
+    var models = require("./models/models.js")();
 
-    var userService = require("./services/user.service.server.js")(app);//(app, models);//pass in model - allows it to interact with persisting world. must create the model now
-    var websiteService = require("./services/website.service.server.js")(app);//(app, models);
-    var pageService = require("./services/page.service.server.js")(app);//(app, models);
-    var widgetService = require("./services/widget.service.server.js")(app);//(app, models);
+    //pass in model - allows it to interact with persisting world. must create the model now
+    var userService = require("./services/user.service.server.js")(app, models);
+    var websiteService = require("./services/website.service.server.js")(app, models);
+    var pageService = require("./services/page.service.server.js")(app, models);
+    var widgetService = require("./services/widget.service.server.js")(app, models);
 
     /*var users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -39,6 +42,4 @@ module.exports = function(app) {
        console.log("hello from the server");
 
     });*/
-
-
 };

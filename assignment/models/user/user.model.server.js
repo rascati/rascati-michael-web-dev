@@ -80,6 +80,7 @@ module.exports = function() {
                 {
                     //can't change username
                     //update email?
+                    email: user.email,
                     firstName: user.firstName,
                     lastName: user.lastName
                 }

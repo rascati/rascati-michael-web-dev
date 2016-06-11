@@ -24,7 +24,7 @@ module.exports = function() {
         _user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
         name: String,
         description: String,
-        pages: {type: mongoose.Schema.Types.Collection, ref: "Page"}, //correct?
+        pages: [{type: mongoose.Schema.Types.ObjectId, ref: "Page"}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "assignment.website"});
 
