@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EditWebsiteController", EditWebsiteController);
 
-    function EditWebsiteController($routeParams, WebsiteService) {
+    function EditWebsiteController($location, $routeParams, WebsiteService) {
         var vm = this;
         var userId = $routeParams.userId;
         vm.userId = userId;
@@ -19,7 +19,6 @@
                 .then(function(response) {
                     vm.website = response.data;
                 });
-            //vm.website = WebsiteService.findWebsiteById(vm.websiteId);
         }
         init();
 
@@ -28,6 +27,7 @@
                 .updateWebsite(vm.websiteId, website)
                 .then(
                     function(response) {
+                        $location.url("/user/" + vm.userId + "/website");
                         vm.success = "Website successfully updated";
                     },
                     function(error) {
@@ -41,6 +41,7 @@
                 .deleteWebsite(vm.websiteId)
                 .then(
                     function(response) {
+                        $location.url("/user/" + vm.userId + "/website");
                         vm.success = "Website successfully updated";
                     },
                     function(error) {

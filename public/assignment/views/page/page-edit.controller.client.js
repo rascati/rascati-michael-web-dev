@@ -19,21 +19,18 @@
             PageService
                 .findPageById(vm.pageId)
                 .then(function(response) {
-                    vm.page = response.data;
+                    vm.page = angular.copy(response.data);
                 });
-
-            //vm.page = angular.copy(PageService.findPageById(vm.pageId));
         }
         init();
 
-        //was updatePage()
-        function updatePage(page) {
+
+        function updatePage() {
             PageService
-                .updatePage(vm.pageId, page)
+                .updatePage(vm.pageId, vm.page)
                 .then(
                     function(response) {
                         $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-
                         vm.success = "Page successfully updated";
                     },
                     function(error) {
@@ -41,23 +38,13 @@
                     }
                 );
         }
-        
-        /*
-        function updatePage() {
-            //console.log(vm.page.name);
-            var result = PageService.updatePage(vm.pageId, vm.page);
-            if (result) {
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-            } else {
-                vm.error = "Could not update page"
-            }
-        }*/
 
         function deletePage() {
             PageService
                 .deletePage(vm.pageId)
                 .then(
                     function(response) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
                         vm.success = "Page successfully deleted";
                     },
                     function(error) {
@@ -65,15 +52,5 @@
                     }
                 );
         }
-
-        /*
-        function deletePage() {
-            var result = PageService.deletePage(vm.pageId);
-            if (result) {
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-            } else {
-                vm.error = "Could not delete page"
-            }
-        }*/
     }
 })();
