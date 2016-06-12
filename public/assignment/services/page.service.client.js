@@ -18,7 +18,6 @@
 
         function createPage(websiteId, page) {
             var url = "/api/website/" + websiteId + "/page";
-            console.log("website id for page: " + websiteId);
 
             console.log("page client");
             console.log(page);

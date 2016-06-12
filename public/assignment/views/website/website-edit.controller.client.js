@@ -18,13 +18,15 @@
                 .findWebsiteById(vm.websiteId)
                 .then(function(response) {
                     vm.website = response.data;
+                    console.log(vm.website);
                 });
         }
         init();
 
-        function updateWebsite(website) {
+        function updateWebsite() {
+            //console.log(vm.website());
             WebsiteService
-                .updateWebsite(vm.websiteId, website)
+                .updateWebsite(vm.websiteId, vm.website)
                 .then(
                     function(response) {
                         $location.url("/user/" + vm.userId + "/website");

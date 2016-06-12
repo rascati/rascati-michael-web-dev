@@ -20,6 +20,7 @@
                 .findPageById(vm.pageId)
                 .then(function(response) {
                     vm.page = angular.copy(response.data);
+                    console.log(vm.page);
                 });
         }
         init();

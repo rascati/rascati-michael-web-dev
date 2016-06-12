@@ -1,13 +1,7 @@
 module.exports = function(app, models) {
 
     var pageModel = models.pageModel;
-
-
-    // var pages = [
-    //     { "_id": "321", "name": "Post 1", "websiteId": "456" },
-    //     { "_id": "432", "name": "Post 2", "websiteId": "456" },
-    //     { "_id": "543", "name": "Post 3", "websiteId": "456" }
-    // ];
+    
 
     app.post("/api/website/:websiteId/page", createPage);
     app.get("/api/website/:websiteId/page", findPageByWebsiteId);
@@ -23,11 +17,16 @@ module.exports = function(app, models) {
         var websiteId = req.params.websiteId;
         var page = req.body;
 
+        //console.log(websiteId);
+        //console.log("from page service server");
+        //console.log(page);
+
         pageModel
             .createPage(websiteId, page)
             .then(
                 function(page) {
                     res.json(page);
+                    //console.log(page);
                 },
                 function(error) {
                     res.status(400).send(error);
@@ -35,7 +34,6 @@ module.exports = function(app, models) {
             );
 
 
-        //req.body.name is undefind
 /*    var newPage= req.body;
         //console.log("server req.body.name");
         //console.log(req.body.name);
@@ -46,7 +44,6 @@ module.exports = function(app, models) {
 */
 
 
-        //console.log("body: " + req.body);
 
         //newPage.websiteId = req.params.websiteId;
         //var newPage = req.body;
@@ -94,13 +91,17 @@ module.exports = function(app, models) {
     }
 
     function findPageById(req, res) {
-        var pageId = req.params._id;
+        var pageId = req.params.pageId;
 
+        console.log("findpagebyID, ID: ");
+        console.log(pageId);
         pageModel
             .findPageById(pageId)
             .then(
                 function(page) {
                     res.json(page);
+                    console.log("page");
+                    console.log(page);
                 },
                 function(error) {
                     res.status(400).send(error);
@@ -124,11 +125,14 @@ module.exports = function(app, models) {
         var pageId = req.params.pageId;
         var newPage = req.body;
 
+        //console.log(pageId);
+        //console.log(newPage);
         pageModel
             .updatePage(pageId, newPage)
             .then(
                 function(page) {
                     res.send(200);
+                    //console.log(page);
                 },
                 function(error) {
                     res.status(404).send(error);

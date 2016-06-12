@@ -122,7 +122,10 @@ module.exports = function(app, models) {
     }
 
     function findWebsiteById(req, res) {
-        var websiteId = req.params._id;
+        var websiteId = req.params.websiteId;
+
+        console.log("website ID: ");
+        console.log(websiteId);
 
         websiteModel
             .findWebsiteById(websiteId)
