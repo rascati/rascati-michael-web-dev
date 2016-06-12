@@ -2,13 +2,6 @@ module.exports = function(app, models) {
 
     var userModel = models.userModel;
 
-    /*var users = [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];*/
-
     app.post("/api/user", createUser);
     //app.get("/api/user", getUsers);
     app.get("/api/user", findUserByCredentials);
@@ -27,7 +20,11 @@ module.exports = function(app, models) {
                     res.json(user);
                 },
                 function(error) {
-                    res.status(400).send("Username: " + newUser.username + " is already in use");
+                    // found this on stack overflow to display errors from the mongoose schema.
+                    // not entirely working; just a practice
+                    for (field in error.errors) {
+                        res.status(400).send(error.errors[field].message); //"Username: " + newUser.username + " is already taken"
+                    }
                 }
             );
 
@@ -142,11 +139,11 @@ module.exports = function(app, models) {
             .then(
                 function(user) {
                     res.json(user);
-                    console.log('made it to user');
+                    //console.log('made it to user');
                 },
                 function(error) {
-                    console.log('made it to error'); //never responds with an error, always reaches the function(user) above
-                    console.log(error);
+                    //console.log('made it to error'); //never responds with an error, always reaches the function(user) above
+                    //console.log(error);
                     res.status(403).send(error);
                 }
             );

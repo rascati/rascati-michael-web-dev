@@ -15,20 +15,18 @@
         vm.createWidget = createWidget;
 
         function createWidget(widgetType) {
-            var newID = (new Date()).getTime();
-            
-            var newWidget = {
-                _id: newID,
-                widgetType: widgetType
-            };
-
-            console.log("widgetType from chooser: " + widgetType);
+            // var newWidget = {
+            //     type: widgetType
+            // };
+            //
+            // console.log("widgetType from chooser: " + widgetType);
 
             WidgetService
-                .createWidget(vm.pageId, newWidget)
+                .createWidget(vm.pageId, {type : widgetType})
                 .then(
                     function(response) {
                         var newWidget = response.data;
+                        console.log(newWidget);
                         $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
                     },
                     function(error) {

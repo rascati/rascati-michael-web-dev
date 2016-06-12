@@ -1,15 +1,17 @@
-/**
- * Created by Michael on 6/8/2016.
- */
-
 module.exports = function() {
 
     var mongoose = require("mongoose");
 
     var PageSchema = mongoose.Schema({
         _website: {type: mongoose.Schema.Types.ObjectId, ref: "Website"},
-        name: String,
-        title: String,
+        name: {
+            type: String,
+            required: true
+        },
+        title: {
+            type: String,
+            required: true
+        },
         description: String,
         widgets: [{type: mongoose.Schema.Types.ObjectId, ref: "Widget"}],
         dateCreated: {type: Date, default: Date.now}

@@ -21,7 +21,6 @@
                 .then(function(response) {
                     vm.widgets = response.data;
                 });
-            //vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
 

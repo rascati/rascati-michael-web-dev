@@ -18,7 +18,6 @@
                 .findWebsiteById(vm.websiteId)
                 .then(function(response) {
                     vm.website = response.data;
-                    console.log(vm.website);
                 });
         }
         init();

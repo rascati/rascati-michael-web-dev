@@ -18,7 +18,6 @@
 
         function createWidget(pageId, widget) {
             var url = "/api/page/" + pageId + "/widget";
-            console.log("pageID from widgetserviceclient: " + pageId);
             widget.pageId = pageId;
             return $http.post(url, widget);
             //widget.pageId = pageId;
@@ -28,15 +27,6 @@
         function findWidgetsByPageId(pageId) {
             var url = "/api/page/" + pageId + "/widget";
             return $http.get(url);
-            /*
-            var result = [];
-            for (var i in widgets) {
-                //console.log(widgets[i]);
-                if (widgets[i].pageId == pageId) {
-                    result.push(widgets[i]);
-                }
-            }
-            return result;*/
         }
 
         function findWidgetById(widgetId) {

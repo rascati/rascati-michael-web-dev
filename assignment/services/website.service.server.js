@@ -19,19 +19,15 @@ module.exports = function(app, models) {
     app.delete("/api/website/:websiteId", deleteWebsite);
 
     
+    //check if website doesn't have a name here?
     function createWebsite(req, res) {
         var userId = req.params.userId;
-        var website = req.body; // or req.body.name?
-        //console.log("req.body._id from server");
-        //console.log(req.body._id);
-
+        var website = req.body;
 
         websiteModel
             .createWebsiteForUser(userId, website)
             .then(
                 function(website) {
-                    //console.log("json website")
-                    //console.log(res.json(website));
                     res.json(website);
                 },
                 function(error) {
@@ -39,52 +35,10 @@ module.exports = function(app, models) {
                 }
             );
 
-
-        //console.log("req.body.name: " + req.body.name);
-        //console.log("req.body: " + req.body);
-
-        /*
-        var nw = {
-            _id:(new Date()).getTime() + "",
-            name: req.body.name,
-            developerId: userId
-        };*/
-        //console.log(nw);
-        
-        //check if website doesn't have a name here?
-
-        //websites.push(nw);
-        //res.json(nw);
     }
-        // var newWebsite = req.body;
-        // newWebsite._id=
-        // newWebsite.developerId = userId;
-        // //var website = req.body;
-    // var newWebsite = {
-    //     _id :(new Date()).getTime() + "",
-    //     developerId : userId,
-    //     name : req.body
-    //
-    // };
-        /*
-        websiteModel
-            .createWebsite(userId, website)
-            .then(
-                function(website) {
-                    res.send(200);
-                    //i think this response was res.json(website)
-                },
-                function(error) {
-                    res.status(400).send(error);
-                }
-            )
-
-        */
 
     function findAllWebsitesForUser(req, res) {
-        //params.userId "userId" is the :userId in the url. ie, dev id wouldn't work
         var developerId = req.params.userId;
-        //var result = [];
 
         websiteModel
             .findAllWebsitesForUser(developerId)
@@ -96,36 +50,10 @@ module.exports = function(app, models) {
                     res.status(400).send(error);
                 }
             );
-
-        /*websiteModel
-            .findAllWebsitesForUser(developerId)
-            .then(
-                function(websites) {
-                    res.json(websites);
-                },
-                function(error) {
-                    
-                }
-            );
-        */
-
-
-       // console.log("Dev ID: " + developerId);
-        /*
-        for (var i in websites) {
-            if (websites[i].developerId === developerId) {
-                result.push(websites[i]);
-            }
-        }
-       // console.log(result);
-        res.send(result);*/
     }
 
     function findWebsiteById(req, res) {
         var websiteId = req.params.websiteId;
-
-        console.log("website ID: ");
-        console.log(websiteId);
 
         websiteModel
             .findWebsiteById(websiteId)
@@ -137,15 +65,6 @@ module.exports = function(app, models) {
                     res.status(400).send(error);
                 }
             );
-
-        /*
-        for (var i in websites) {
-            if (websites[i]._id === websiteId) {
-                res.send(websites[i]);
-                return;
-            }
-        }
-        res.send({});*/
     }
     
     function updateWebsite(req, res) {
@@ -162,16 +81,6 @@ module.exports = function(app, models) {
                     res.status(404).send(error);
                 }
             );
-        
-        /*
-        for (var i in websites) {
-            if (websites[i]._id === websiteId) {
-                websites[i].name = newWebsite.name;
-                res.send(200);
-                return;
-            }
-        }
-        res.status(400).send("Website with ID: " + websiteId + " not found");*/
     }
     
     function deleteWebsite(req, res) {
@@ -187,15 +96,5 @@ module.exports = function(app, models) {
                     res.status(404).send("Unable to remove website with ID: " + websiteId);
                 }
             );
-
-        /*
-        for (var i in websites) {
-            if (websites[i]._id === websiteId) {
-                websites.splice(i, 1);
-                res.send(200);
-                return;
-            }
-        }
-        res.status(404).send("Unable to remove website with ID: " + websiteId);*/
     }
 };

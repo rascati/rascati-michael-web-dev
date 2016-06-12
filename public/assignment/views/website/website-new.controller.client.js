@@ -7,8 +7,6 @@
         var vm = this;
         var userId = $routeParams.userId;
         vm.userId = userId;
-
-        //no init, but have event handler
         
         vm.createWebsite = createWebsite;
 
@@ -24,7 +22,7 @@
                         }
                     },
                     function(error) {
-                        vm.error = "Unable to create website";
+                        vm.error = "Name is required";
                     }
                 );
 

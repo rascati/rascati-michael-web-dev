@@ -2,7 +2,7 @@
 
 Same exact API in the User WebService on the client side.
 Controller receives commands, commands get sent to the client WebService
-That was translatted to HTTP and reached the server.
+That was translated to HTTP and reached the server.
 Now it's going to the data model and interacting with the database
 as opposed to the local array of hardcoded data.
 
@@ -78,8 +78,6 @@ module.exports = function() {
             {_id: userId},
             {$set:
                 {
-                    //can't change username
-                    //update email?
                     email: user.email,
                     firstName: user.firstName,
                     lastName: user.lastName

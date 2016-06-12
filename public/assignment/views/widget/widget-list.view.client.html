@@ -20,9 +20,15 @@
     </div>
 </nav>
 
+{{model.userId}}
+{{model.websiteId}}
+{{model.pageId}}
+{{model.widgets}}
+
 <div class="widget-container">
     <div ng-repeat="widget in model.widgets"
          ng-switch="widget.widgetType">
+        {{}}
         <div class="mike-widget-tool">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}" class="navbar-link">
                 <span class="glyphicon glyphicon-cog">
@@ -31,6 +37,14 @@
             <span class="glyphicon glyphicon-align-justify">
             </span>
         </div>
+
+        User
+        {{model.userId}}
+        Website
+        {{model.websiteId}}
+        Page
+        {{model.pageId}}
+
 
         <div ng-switch-when="HEADER"  class="mike-widget">
             <div ng-switch="widget.size">

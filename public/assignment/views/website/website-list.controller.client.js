@@ -16,7 +16,6 @@
                 .findWebsitesForUser(vm.userId)
                 .then(function(response) {
                     vm.websites = response.data;
-                    console.log(response.data);
                 });
         }
         init();

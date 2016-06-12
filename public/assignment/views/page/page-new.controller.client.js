@@ -24,8 +24,7 @@
                         }
                     },
                     function(error) {
-                        vm.error = "Unable to create page";
-                        console.log("page name: " + name);
+                        vm.error = "Name and title are required";
                     }
                 );
 
