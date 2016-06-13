@@ -16,10 +16,10 @@ module.exports = function() {
         placeholder: String,
         description: String,
         url: String,
-        width: String, //string
-        height: String, //string
-        rows: String,
-        size: String,
+        width: String, // number
+        height: String, // number
+        rows: String, // number
+        size: String, // number
         class: String,
         icon: String,
         deletable: Boolean,

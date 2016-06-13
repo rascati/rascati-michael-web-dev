@@ -1,0 +1,3 @@
+/*
+ The directive must modify the order of the widgets in the original array in the server.
+ */

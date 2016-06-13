@@ -22,6 +22,7 @@ module.exports = function(app, models) {
     app.get("/api/page/:pageId/widget", findWidgetsByPageId);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
+    app.put("/api/page/:pageId/widget?start=index1&end=index2");//query for start and end index
     app.delete("/api/widget/:widgetId", deleteWidget);
 
 
