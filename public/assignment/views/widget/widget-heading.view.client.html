@@ -20,8 +20,6 @@
     </div>
 </nav>
 
-{{model.widget}}
-
 <form>
     <div class="form-group">
         <label for="name">Name</label>
@@ -41,7 +39,7 @@
     </div>
     <div class="form-group">
         <label for="size">Size</label>
-        <!--select ng-model="model.widget.size"
+        <select ng-model="model.widget.size"
                 id="size"
                 class="form-control">
             <option value="1">1</option>
@@ -50,12 +48,12 @@
             <option value="4">4</option>
             <option value="5">5</option>
             <option value="6">6</option>
-        </select-->
-        <input ng-model="model.widget.size"
+        </select>
+        <!--input ng-model="model.widget.size"
                type="text"
                class="form-control"
                id="size"
-               placeholder="Heading Size">
+               placeholder="Heading Size"-->
     </div>
 </form>
 
