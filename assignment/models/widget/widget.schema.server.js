@@ -3,8 +3,14 @@ module.exports = function() {
     var mongoose = require("mongoose");
 
     var WidgetSchema = mongoose.Schema({
-        _page: {type: mongoose.Schema.Types.ObjectId, ref: "Page"},
-        type: {type: String, enum: ["HEADER", "IMAGE", "YOUTUBE", "HTML", "INPUT"]}, //not sure what to do here
+        _page: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Page"
+        },
+        type: {
+            type: String,
+            enum: ["HEADER", "IMAGE", "YOUTUBE", "HTML", "INPUT"]
+        },
         name: String,
         text: String,
         placeholder: String,
@@ -12,8 +18,8 @@ module.exports = function() {
         url: String,
         width: String, //string
         height: String, //string
-        rows: Number,
-        size: Number,
+        rows: String,
+        size: String,
         class: String,
         icon: String,
         deletable: Boolean,

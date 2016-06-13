@@ -23,7 +23,6 @@
         init();
 
         function updateWebsite() {
-            //console.log(vm.website());
             WebsiteService
                 .updateWebsite(vm.websiteId, vm.website)
                 .then(

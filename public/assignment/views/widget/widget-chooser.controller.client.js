@@ -15,19 +15,18 @@
         vm.createWidget = createWidget;
 
         function createWidget(widgetType) {
-            // var newWidget = {
+            // var widget = {
             //     type: widgetType
             // };
-            //
-            // console.log("widgetType from chooser: " + widgetType);
-
             WidgetService
-                .createWidget(vm.pageId, {type : widgetType})
+                .createWidget(vm.pageId, {type: widgetType})
                 .then(
                     function(response) {
                         var newWidget = response.data;
-                        console.log(newWidget);
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                        
+                        if (newWidget) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                        }
                     },
                     function(error) {
                         vm.error = "Unable to create widget";

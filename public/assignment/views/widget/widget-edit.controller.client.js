@@ -23,18 +23,15 @@
                 .then(function(response) {
                     vm.widget = response.data;
                 });
-
-            //vm.widget = WidgetService.findWidgetById(vm.widgetId);
-            //console.log(vm.widget.widgetType);
         }
         init();
 
-        //was updateWidget() -no params
-        function updateWidget(widget) {
+        function updateWidget() {
             WidgetService
-                .updateWidget(vm.widgetId, widget)
+                .updateWidget(vm.widgetId, vm.widget)
                 .then(
                     function(response) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                         vm.success = "Widget successfully updated";
                     },
                     function(error) {
@@ -51,9 +48,10 @@
 
         function deleteWidget() {
             WidgetService
-                .deleteWidget(vm.widget._id)
+                .deleteWidget(vm.widgetId)
                 .then(
                     function(response) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                         vm.success = "Widget successfully updated";
                     },
                     function(error) {

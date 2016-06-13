@@ -36,7 +36,8 @@
             return $sce.trustAsResourceUrl(url);
         }
 
+        /*
         $(".widget-container")
-            .sortable({axis: "y"});
+            .sortable({axis: "y"});*/
     }
 })();

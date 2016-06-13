@@ -20,15 +20,11 @@
     </div>
 </nav>
 
-{{model.userId}}
-{{model.websiteId}}
-{{model.pageId}}
-{{model.widgets}}
+<!--{{model.widgets}}-->
 
 <div class="widget-container">
     <div ng-repeat="widget in model.widgets"
-         ng-switch="widget.widgetType">
-        {{}}
+         ng-switch="widget.type">
         <div class="mike-widget-tool">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}" class="navbar-link">
                 <span class="glyphicon glyphicon-cog">
@@ -37,14 +33,7 @@
             <span class="glyphicon glyphicon-align-justify">
             </span>
         </div>
-
-        User
-        {{model.userId}}
-        Website
-        {{model.websiteId}}
-        Page
-        {{model.pageId}}
-
+        {{widget.text}}
 
         <div ng-switch-when="HEADER"  class="mike-widget">
             <div ng-switch="widget.size">
@@ -77,6 +66,7 @@
         </div>
 
         <div ng-switch-default>{{widget}}</div>
+        <br>
     </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom">

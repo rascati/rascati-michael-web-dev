@@ -98,6 +98,9 @@ module.exports = function(app, models) {
         var widgetId = req.params.widgetId;
         var newWidget = req.body;
 
+        console.log(widgetId);
+        console.log(newWidget);
+
         widgetModel
             .updateWidget(widgetId, newWidget)
             .then(
