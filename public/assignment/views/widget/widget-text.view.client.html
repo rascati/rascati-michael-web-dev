@@ -20,15 +20,33 @@
     </div>
 </nav>
 
-<div class="form-group">
-    <div ng-model="model.widget.text"
-         text-angular
-         ta-toolbar="[['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
-                      ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
-                      ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent'],
-                      ['html', 'insertImage','insertLink', 'insertVideo', 'wordcount', 'charcount']]">
+<form>
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input ng-model="model.widget.text"
+               class="form-control"
+               id="text"
+               placeholder="Text"/>
+
+        <label for="rows">Rows</label>
+        <input ng-model="model.widget.rows"
+               class="form-control"
+               type="number"
+               id="rows"
+               placeholder="Rows"/>
+
+        <label for="placeholder">Placeholder</label>
+        <input ng-model="model.widget.placeholder"
+               class="form-control"
+               id="placeholder"
+               placeholder="Placeholder"/>
+
+        <label for="formatted">Formatted</label>
+        <input ng-model="model.widget.formatted"
+               type="checkbox"
+               id="formatted"/>
     </div>
-</div>
+</form>
 
 <a class="btn btn-danger btn-block"
    ng-click="model.deleteWidget()">

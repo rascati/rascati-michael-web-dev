@@ -9,7 +9,7 @@ module.exports = function() {
         },
         type: {
             type: String,
-            enum: ["HEADER", "IMAGE", "YOUTUBE", "HTML", "INPUT"]
+            enum: ["HEADER", "IMAGE", "YOUTUBE", "HTML", "TEXT"]
         },
         name: String,
         text: String,
@@ -18,7 +18,7 @@ module.exports = function() {
         url: String,
         width: String, // number
         height: String, // number
-        rows: String, // number
+        rows: Number, // number
         size: String, // number
         class: String,
         icon: String,
