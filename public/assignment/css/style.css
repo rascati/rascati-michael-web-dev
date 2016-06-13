@@ -27,3 +27,7 @@ p.navbar-text.pull-left {
     padding-bottom: 3px;
     border-bottom-left-radius: 8px;
 }
+
+.mike-widget {
+    /* maybe do auto-centering here */
+}

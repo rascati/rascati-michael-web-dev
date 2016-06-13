@@ -148,7 +148,9 @@ module.exports = function(app, models) {
 
     function uploadImage(req, res) {
         var widgetId      = req.body.widgetId;
+        console.log(widgetId);
         var width         = req.body.width;
+        console.log(width);
         var myFile        = req.file;
 
         var userId = req.body.userId;
@@ -163,12 +165,18 @@ module.exports = function(app, models) {
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
 
-        for(var i in widgets) {
-            if(widgets[i]._id === widgetId) {
-                widgets[i].url = "/uploads/" + filename;
-                
-            }
-        }
+
+        widgetModel
+            .findWidgetById(widgetId)
+            .then(
+                function(widget) {
+                    widget.url = "/uploads/" + filename;
+                    res.json(widget);
+                },
+                function(error) {
+                    res.status(400).send(error);
+                }
+            );
 
         res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
     }
