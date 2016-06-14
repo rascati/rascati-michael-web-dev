@@ -7,6 +7,7 @@
 
         var api = {
             createUser: createUser,
+            login: login,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
             //findUserByUsername: findUserByUsername,
@@ -14,7 +15,19 @@
             deleteUser: deleteUser
         };
         return api;
+        
+        
+        function login(username, password) {
+            //using the 'get' we encode username/password as a part of the URL (not safe)
+            //using the 'post' username/password are encoded inside the body of the request. can use HTTPS
+            var url = "/api/login";
 
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post(url, user);
+        }
         
         function createUser(username, password) {
             var url = "/api/user";

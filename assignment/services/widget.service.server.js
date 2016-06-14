@@ -99,8 +99,8 @@ module.exports = function(app, models) {
         var widgetId = req.params.widgetId;
         var newWidget = req.body;
 
-        console.log(widgetId);
-        console.log(newWidget);
+        //console.log(widgetId);
+        //console.log(newWidget);
 
         widgetModel
             .updateWidget(widgetId, newWidget)
@@ -149,9 +149,9 @@ module.exports = function(app, models) {
 
     function uploadImage(req, res) {
         var widgetId      = req.body.widgetId;
-        console.log(widgetId);
+        //console.log(widgetId);
         var width         = req.body.width;
-        console.log(width);
+        //console.log(width);
         var myFile        = req.file;
 
         var userId = req.body.userId;

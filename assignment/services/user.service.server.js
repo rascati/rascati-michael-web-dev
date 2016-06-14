@@ -1,7 +1,11 @@
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 module.exports = function(app, models) {
 
     var userModel = models.userModel;
 
+    app.post("/api/login", passport.authenticate("local"), login); //if the passport auth succeeds, it calls the login function. if it fails, (return false or error) browser returns 403 (forbidden)
     app.post("/api/user", createUser);
     //app.get("/api/user", getUsers);
     app.get("/api/user", findUserByCredentials);
@@ -9,6 +13,67 @@ module.exports = function(app, models) {
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
 
+
+    passport.use("local", new LocalStrategy(localStrategy));
+    //passport.use("google", new .....);
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    function serializeUser(user, done) {
+        //want to put entire object(user) in the session
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel
+            .findUserById(user._id) //"is this a valid user" .will have id as part of session name
+            .then(
+                function(user) {
+                    done(null, user);
+                },
+                function(error) {
+                    done(error, null);
+                }
+            );
+    }
+
+    function localStrategy(username, password, done) {
+        userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if (user.username === username && user.password === password) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false);
+                    }
+                },
+                function(error) {
+                    if (error) {
+                        return done(error);
+                    }
+                }
+            );
+    }
+
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
+        /*
+        var username = req.body.username;
+        var password = req.body.password;
+        userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    res.json(user);
+                },
+                function(error) {
+                    //console.log('made it to error'); //never responds with an error, always reaches the function(user) above
+                    res.status(403).send(error);
+                }
+            );*/
+    }
 
     function createUser(req, res) {
         var newUser = req.body;
@@ -139,11 +204,9 @@ module.exports = function(app, models) {
             .then(
                 function(user) {
                     res.json(user);
-                    //console.log('made it to user');
                 },
                 function(error) {
                     //console.log('made it to error'); //never responds with an error, always reaches the function(user) above
-                    //console.log(error);
                     res.status(403).send(error);
                 }
             );
