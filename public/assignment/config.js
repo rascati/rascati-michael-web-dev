@@ -15,10 +15,17 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user/:userId", {
+            .when("/user", { // from the fb stuff. could use this for other things to visit other peoples' profile. if you have the id, visit other person's profile- dont need to be logged in. if you dont have id goto own profile
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedin } //conditions by which you will be allowed to go to this page
+            })
+            .when("/user/:userId", { //want to protect this page.
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedin } //conditions by which you will be allowed to go to this page
             })
             .when("/user/:userId/website", {
                 templateUrl: "views/website/website-list.view.client.html",
@@ -74,5 +81,36 @@
             .otherwise({
                 redirectTo: "/login"
             });
+
+        function checkLoggedin(UserService, $q, $location, $rootScope) {
+
+            var deferred = $q.defer();
+
+            UserService
+                .checkLoggedin()
+                .then(
+                    function(response) { //user or a null. null -> current user is not logged in
+                        var user = response.data;
+
+                        console.log(user);
+
+                        if (user == '0') {
+                            deferred.reject();
+                            $rootScope.currentUser = null;
+                            $location.url("/login");
+                        } else { //resolve. user try to nav is invalid user
+                            $rootScope.currentUser = user;
+                            deferred.resolve();
+                        }
+                    },
+                    function(error) {
+                        console.log(error);
+                        $rootScope.currentUser = null;
+                        deferred.reject();
+                    }
+                );
+
+            return deferred.promise;
+        }
     }
 })();

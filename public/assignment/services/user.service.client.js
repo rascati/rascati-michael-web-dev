@@ -7,7 +7,10 @@
 
         var api = {
             createUser: createUser,
+            checkLoggedin: checkLoggedin,
+            register: register,
             login: login,
+            logout: logout,
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
             //findUserByUsername: findUserByUsername,
@@ -15,7 +18,24 @@
             deleteUser: deleteUser
         };
         return api;
-        
+
+        function checkLoggedin() {
+            return $http.get("/api/loggedin");
+        }
+
+        function logout() {
+            return $http.post("/api/logout");
+        }
+
+        function register(username, password) {
+            var url = "/api/register";
+
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post(url, user);
+        }
         
         function login(username, password) {
             //using the 'get' we encode username/password as a part of the URL (not safe)

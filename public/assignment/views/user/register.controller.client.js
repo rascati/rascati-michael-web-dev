@@ -3,17 +3,32 @@
         .module("WebAppMaker")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($location, UserService) {
+    function RegisterController($location, $rootScope, UserService) {
         var vm = this;
 
         vm.register = register;
 
+        // function register(username, password, verify) {
+        //     UserService
+        //         .createUser(username, password)
+        //         .then(
+        //             function(response) {
+        //                 var user = response.data;
+        //                 $location.url("/user/" + user._id);
+        //             },
+        //             function(error) {
+        //                 vm.error = error.data;
+        //             }
+        //         );
+        // }
+
         function register(username, password, verify) {
             UserService
-                .createUser(username, password)
+                .register(username, password)
                 .then(
                     function(response) {
                         var user = response.data;
+                        $rootScope.currentUser = user; // cache fact that we have current user
                         $location.url("/user/" + user._id);
                     },
                     function(error) {
@@ -21,7 +36,7 @@
                     }
                 );
         }
-
+        
         /*function register(username, password, verify) {
             //do as much validation on client side before it reaches the server
             UserService

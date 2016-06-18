@@ -20,6 +20,13 @@ module.exports = function() {
         },
         firstName: String,
         lastName: String,
+        facebook: {
+            id: String,
+            displayName: String
+        },
+        google: {
+            // google shit
+        },
         email: String,
         phone: String,
         websites: [{type: mongoose.Schema.Types.ObjectId, ref: "Website"}],

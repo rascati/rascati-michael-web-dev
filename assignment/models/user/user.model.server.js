@@ -44,6 +44,7 @@ module.exports = function() {
         findUserById: findUserById,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
+        findFacebookUser: findFacebookUser,
         updateUser: updateUser,
         deleteUser: deleteUser
     };
@@ -69,6 +70,10 @@ module.exports = function() {
     //Retrieves a user instance whose username and password are equal to parameters userId and password
     function findUserByCredentials(username, password) {
         return User.findOne({username: username, password: password});
+    }
+
+    function findFacebookUser(id) {
+        return User.findOne({"facebook.id": id}); // probably also works as {facebook.id: id} (without the quotes)
     }
 
     //Updates user instance whose _id is equal to parameter userId
