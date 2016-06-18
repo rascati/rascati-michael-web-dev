@@ -9,8 +9,8 @@ module.exports = function(app, models) {
 
     app.get("/auth/facebook/callback",
         passport.authenticate('facebook', {
-            successRedirect: "/#/user",
-            failureRedirect: "/#/login" // maybe just #/login
+            successRedirect: "/assignment/#/user",
+            failureRedirect: "/assignment/#/login" // maybe just #/login
         }));
     app.get ("/auth/facebook", passport.authenticate('facebook', { scope : 'email' })); //want passport-fb to handle this one
                                                                   // scope allows us to configure WHAT WE WANT TO KNOW/ASK FROM FACEBOOK

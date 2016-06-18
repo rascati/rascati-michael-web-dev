@@ -10,13 +10,13 @@ module.exports = function() {
 
     var UserSchema = mongoose.Schema({
         username: {
-            type: String,
-            required: [true, "Username is required"],
-            unique: [true, "Username is taken"]
+            type: String
+            // required: [true, "Username is required"],
+            // unique: [true, "Username is taken"]
         },
         password: {
-            type: String,
-            required: [true, "Password is required and needs to match"]
+            type: String
+            // required: [true, "Password is required and needs to match"]
         },
         firstName: String,
         lastName: String,
