@@ -10,21 +10,24 @@
                 controller: "HomeController",
                 controllerAs: "model"
             })
-            //buy with turquose nav
-            .when("/buy", {
+            .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
                 controller: "LoginController",
                 controllerAs: "model"
             })
-            //sell with black nav
-            .when("/sell", {
+            .when("/register", {
                 templateUrl: "views/user/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/sell/userId", {
+            .when("/user/:userId", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
+                controllerAs: "model"
+            })
+            .when("#/user/:userId/item", {
+                templateUrl: "views/item/item-list.view.client.html",
+                controller: "ItemListController",
                 controllerAs: "model"
             })
             /*

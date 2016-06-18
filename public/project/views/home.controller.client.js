@@ -6,12 +6,12 @@
     function HomeController($location) {
         var vm = this;
 
-        vm.buy = buy;
-        vm.sell = sell; //probably just href that links in the view, goes to login/register page
+        vm.enter = enter;
 
-        //GOTO a search page
-        function buy() {
-            
+        //GOTO a login/register page
+        function enter() {
+            $location.url("/login/");
+
         }
     }
 })();

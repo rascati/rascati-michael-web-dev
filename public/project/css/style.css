@@ -3,22 +3,13 @@ input {
 }
 
 body {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 70px;
+    padding-bottom: 20px;
 }
 
 .btn {
     margin-bottom: 5px;
 }
-
-p.navbar-text.pull-right {
-    margin-right: 15px;
-}
-
-p.navbar-text.pull-left {
-    margin-left: 15px;
-}
-
 
 .navbar-inverse .navbar-brand {
     font-color: white;
@@ -26,15 +17,31 @@ p.navbar-text.pull-left {
 
 .navbar-inverse {
     background-color: black;
-    opacity: .5
+    opacity: .8
+}
+
+.navbar-inverse .navbar-link {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .navbar-nav>li>a {
     color: white;
 }
 
-h2, #explore {
-    text-align: center
+#google {
+    background-color: salmon;
+    border-color: salmon;
+}
+
+h2, h5{
+    text-align: center;
+}
+
+#help {
+    position: relative;
+    vertical-align: middle;
+    color: white;
 }
 
 #image {
@@ -54,3 +61,10 @@ h2, #explore {
     font-weight: bold;
 }
 
+p.navbar-text.pull-right {
+    margin-right: 6px;
+}
+
+p.navbar-text.pull-left {
+    margin-left: 6px;
+}
