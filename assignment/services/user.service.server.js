@@ -290,7 +290,11 @@ module.exports = function(app, models) {
     }
 
     function updateUser(req, res) {
-        var id = req.params.userId;
+        console.log(req.params); // params.userId: undefined (if it's a fb user)
+        console.log(req.body); // params.body._id: the fb id
+        console.log(req.body._id);
+        
+        var id = req.body._id;
         var newUser = req.body;
 
         userModel

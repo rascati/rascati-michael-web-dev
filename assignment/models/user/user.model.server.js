@@ -79,6 +79,8 @@ module.exports = function() {
     //Updates user instance whose _id is equal to parameter userId
     //sets first instance of _id's firstName and lastName field to the browser param user.firstName/lastName
     function updateUser(userId, user) {
+        delete user._id;
+
         return User.update(
             {_id: userId},
             {$set:
