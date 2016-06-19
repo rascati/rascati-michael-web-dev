@@ -26,17 +26,21 @@
 
 
         function updatePage() {
-            PageService
-                .updatePage(vm.pageId, vm.page)
-                .then(
-                    function(response) {
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-                        vm.success = "Page successfully updated";
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                );
+            if (vm.page.name) {
+                PageService
+                    .updatePage(vm.pageId, vm.page)
+                    .then(
+                        function(response) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                            vm.success = "Page successfully updated";
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    );
+            } else {
+                vm.error = "need name";
+            }
         }
 
         function deletePage() {

@@ -13,20 +13,24 @@
         vm.createPage = createPage;
 
         function createPage(name, title) {
-            PageService
-                .createPage(vm.websiteId, {name : name , title : title})
-                .then(
-                    function(response) {
-                        var newPage = response.data;
+            if (name) {
+                PageService
+                    .createPage(vm.websiteId, {name : name , title : title})
+                    .then(
+                        function(response) {
+                            var newPage = response.data;
 
-                        if (newPage) {
-                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                            if (newPage) {
+                                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                            }
+                        },
+                        function(error) {
+                            vm.error = "Name and title are required";
                         }
-                    },
-                    function(error) {
-                        vm.error = "Name and title are required";
-                    }
-                );
+                    );
+            } else {
+            }
+
 
             /*if (name && title) {
                 var newPage = PageService.createPage(vm.websiteId, name);

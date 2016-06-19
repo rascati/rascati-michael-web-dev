@@ -27,6 +27,7 @@
                 .updateWebsite(vm.websiteId, vm.website)
                 .then(
                     function(response) {
+                        //maybe don't redirect, just edit and leave it
                         $location.url("/user/" + vm.userId + "/website");
                         vm.success = "Website successfully updated";
                     },

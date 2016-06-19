@@ -28,14 +28,36 @@
                 .then(
                     function(response) {
                         var user = response.data;
-                        $rootScope.currentUser = user; // cache fact that we have current user
-                        $location.url("/user/" + user._id);
+
+                        console.log(user);
+
+                        if (user.username != null && user.password != null) {
+                            $rootScope.currentUser = user; //
+                            var id = user._id;
+                            $location.url("/user/" + id);
+                        } else { // hopefully a temporary fix
+                            vm.error = "User not found";
+                        }
                     },
                     function(error) {
                         vm.error = error.data;
                     }
                 );
         }
+        // function register(username, password, verify) {
+        //     UserService
+        //         .register(username, password)
+        //         .then(
+        //             function(response) {
+        //                 var user = response.data;
+        //                 $rootScope.currentUser = user; // cache fact that we have current user
+        //                 //$location.url("/user/" + user._id);
+        //             },
+        //             function(error) {
+        //                 vm.error = error.data;
+        //             }
+        //         );
+        // }
         
         /*function register(username, password, verify) {
             //do as much validation on client side before it reaches the server

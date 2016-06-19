@@ -23,8 +23,8 @@ module.exports = function() {
     var WebsiteSchema = mongoose.Schema({
         _user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
         name: {
-            type: String,
-            required: [true, "Website name is required"]
+            type: String
+            // required: [true, "Website name is required"]
         },
         description: String,
         pages: [{type: mongoose.Schema.Types.ObjectId, ref: "Page"}],
