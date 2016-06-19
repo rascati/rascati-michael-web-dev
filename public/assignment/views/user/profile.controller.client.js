@@ -37,28 +37,14 @@
                 );
         }
 
-        //checkmark invokes put request. to userserv
-        function updateUser() {
-            UserService
-                .updateUser(id, vm.user)
-                .then(
-                    function(response) {
-                        vm.success = "User successfully updated";
-                    },
-                    function (error) {
-                        vm.error = error.data;
-                    }
-                )
-        }
-
         /*
         function init() {
             vm.user = angular.copy(UserService.findUserById(id));
-            
+
             UserService
                 .findUserById(id)
-                .then(function(response) { 
-                    
+                .then(function(response) {
+
                 })
         }
         init();
@@ -91,6 +77,22 @@
                     }
                 );
         }*/
+        
+        //checkmark invokes put request. to userserv
+        function updateUser($scope) {
+            // var myForm = angular.element(document.getElementById("myForm"));
+            UserService
+                .updateUser(id, vm.user)
+                .then(
+                    function(response) {
+                        // $scope.myForm.$setPristine();
+                        vm.success = "User successfully updated";
+                    },
+                    function (error) {
+                        vm.error = error.data;
+                    }
+                );
+       }
 
 
         function logout() {

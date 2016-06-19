@@ -2,10 +2,13 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateUser()" class="navbar-link">
+                <button ng-click="model.updateUser()"
+                   class="navbar-link"
+                   form="myForm"
+                   type="submit">
                   <span class="glyphicon glyphicon-ok">
                   </span>
-                </a>
+                </button>
             </p>
             <a class="navbar-brand">
                 Profile
@@ -14,8 +17,14 @@
     </div>
 </nav>
 
+<!--<div ng-show="model.success &&-->
+              <!--myForm.$submitted &&-->
+              <!--myForm.email.$valid" class="alert alert-success">-->
+    <!--{{model.success}}-->
+<!--</div>-->
 
-<div ng-show="model.success" class="alert alert-success">
+<div ng-show="model.success &&
+              myForm.email.$valid" class="alert alert-success">
     {{model.success}}
 </div>
 
@@ -23,7 +32,7 @@
     {{model.error}}
 </div>
 
-<form>
+<form id="myForm" name="myForm" novalidate>
     <div class="form-group">
         <label for="username">Username</label>
         <input ng-model="model.user.username"
@@ -38,7 +47,11 @@
                type="email"
                class="form-control"
                id="email"
+               name="email"
                placeholder="alice@wonderland.com">
+        <span ng-show="myForm.$submitted && myForm.email.$error.email">
+            This is not a valid email.
+        </span>
     </div>
     <div class="form-group">
         <label for="first">First Name</label>
@@ -56,9 +69,34 @@
                id="last"
                placeholder="Wonderland">
     </div>
+    <!--<button ng-click="model.updateUser()"-->
+            <!--type="submit"-->
+            <!--class="btn btn-info btn-block">Update Info</button>-->
+
+    <!--<button ng-click="model.updateUser()"-->
+            <!--type="submit"-->
+            <!--form="myForm"-->
+            <!--class="btn btn-info btn-block">Update Info</button>-->
+    <!--<button ng-click="model.updateUser()"-->
+       <!--class="btn btn-info btn-block"-->
+       <!--form="myForm"-->
+       <!--type="submit">-->
+                  <!--<span class="glyphicon glyphicon-ok">-->
+                  <!--</span>-->
+    <!--</button>-->
+
+    <!--<input ng-click="model.updateUser()"-->
+       <!--class="navbar-link"-->
+       <!--role="button"-->
+       <!--form="myForm"-->
+       <!--type="submit">-->
+                  <!--<span class="glyphicon glyphicon-ok">-->
+                  <!--</span>-->
+    <!--</input>-->
+
+    <a class="btn btn-primary btn-block"
+     href="#/user/{{model.user._id}}/website">Websites</a>
+    <a ng-click="model.logout()" class="btn btn-danger btn-block">Logout</a>
+    <a ng-click="model.unregister()" class="btn btn-danger btn-block">Unregister</a>
 </form>
 
-<a class="btn btn-primary btn-block"
-   href="#/user/{{model.user._id}}/website">Websites</a>
-<a ng-click="model.logout()" class="btn btn-danger btn-block">Logout</a>
-<a ng-click="model.unregister()" class="btn btn-danger btn-block">Unregister</a>
