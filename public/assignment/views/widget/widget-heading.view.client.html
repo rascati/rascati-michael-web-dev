@@ -11,23 +11,30 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget()" class="navbar-link">
+                <button ng-click="model.updateWidget()"
+                        class="navbar-link"
+                        type="submit"
+                        form="myForm" >
                     <span class="glyphicon glyphicon-ok">
                     </span>
-                </a>
+                </button>
             </p>
         </div>
     </div>
 </nav>
 
-<form>
+<form id="myForm" name="myForm" novalidate>
     <div class="form-group">
         <label for="name">Name</label>
         <input ng-model="model.widget.name"
                type="text"
                class="form-control"
                id="name"
-               placeholder="Widget Name">
+               name="name"
+               placeholder="Widget Name" required>
+        <span ng-show="myForm.$submitted && myForm.name.$invalid">
+            Heading name is required
+        </span>
     </div>
     <div class="form-group">
         <label for="text">Text</label>
@@ -35,25 +42,28 @@
                type="text"
                class="form-control"
                id="text"
-               placeholder="Widget Text">
+               name="text"
+               placeholder="Widget Text" required>
+        <span ng-show="myForm.$submitted && myForm.text.$invalid">
+            Text is required
+        </span>
     </div>
     <div class="form-group">
         <label for="size">Size</label>
         <select ng-model="model.widget.size"
                 id="size"
-                class="form-control">
+                name="size"
+                class="form-control" required>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-            <option value="6">6</option>
+            <option value="6" selected>6</option>
         </select>
-        <!--input ng-model="model.widget.size"
-               type="text"
-               class="form-control"
-               id="size"
-               placeholder="Heading Size"-->
+        <span ng-show="myForm.$submitted && myForm.size.$invalid">
+            Heading size is required
+        </span>
     </div>
 </form>
 

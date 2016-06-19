@@ -38,8 +38,6 @@
                             vm.error = error.data;
                         }
                     );
-            } else {
-                vm.error = "need name";
             }
         }
 

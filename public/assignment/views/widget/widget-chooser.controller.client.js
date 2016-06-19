@@ -15,15 +15,16 @@
         vm.createWidget = createWidget;
 
         function createWidget(widgetType) {
-            // var widget = {
-            //     type: widgetType
-            // };
+            var widget = {
+                type: widgetType
+            };
+
             WidgetService
-                .createWidget(vm.pageId, {type: widgetType})
+                .createWidget(vm.pageId, widget)
                 .then(
                     function(response) {
                         var newWidget = response.data;
-                        
+                        console.log(newWidget);
                         if (newWidget) {
                             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
                         }
@@ -32,6 +33,7 @@
                         vm.error = "Unable to create widget";
                     }
                 );
+
         }
     }
 })();

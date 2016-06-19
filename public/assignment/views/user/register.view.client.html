@@ -23,7 +23,11 @@
            class="form-control"
            placeholder="verify password"
            type="password" required/>
-    <span ng-show="myForm.$submitted && myForm.verify.$invalid && password!=verify">
+    <span ng-show="myForm.$submitted && myForm.verify.$invalid">
+        Both passwords fields are required
+    </span>
+    <span ng-show="myForm.$submitted && myForm.password != myForm.verify">
+        <br>
         Both passwords fields must match
     </span>
 </form>

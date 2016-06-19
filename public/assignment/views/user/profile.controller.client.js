@@ -79,19 +79,22 @@
         }*/
         
         //checkmark invokes put request. to userserv
-        function updateUser($scope) {
-            // var myForm = angular.element(document.getElementById("myForm"));
-            UserService
-                .updateUser(id, vm.user)
-                .then(
-                    function(response) {
-                        // $scope.myForm.$setPristine();
-                        vm.success = "User successfully updated";
-                    },
-                    function (error) {
-                        vm.error = error.data;
-                    }
-                );
+        function updateUser() {
+            console.log(vm.user.email);
+            if (vm.user.email) {
+                // var myForm = angular.element(document.getElementById("myForm"));
+                UserService
+                    .updateUser(id, vm.user)
+                    .then(
+                        function(response) {
+                            // $scope.myForm.$setPristine();
+                            vm.success = "User successfully updated";
+                        },
+                        function (error) {
+                            vm.error = error.data;
+                        }
+                    );
+            }
        }
 
 

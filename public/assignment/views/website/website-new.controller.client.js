@@ -11,20 +11,22 @@
         vm.createWebsite = createWebsite;
 
         function createWebsite(website) {
-            WebsiteService
-                .createWebsite(vm.userId, website)
-                .then(
-                    function(response) {
-                        var newWebsite = response.data;
-                        
-                        if (newWebsite) {
-                            //$location.url("/user/" + vm.userId + "/website");
+            if (website) {
+                WebsiteService
+                    .createWebsite(vm.userId, website)
+                    .then(
+                        function(response) {
+                            var newWebsite = response.data;
+
+                            if (newWebsite) {
+                                //$location.url("/user/" + vm.userId + "/website");
+                            }
+                        },
+                        function(error) {
+                            vm.error = "Name is required";
                         }
-                    },
-                    function(error) {
-                        vm.error = "Name is required";
-                    }
-                );
+                    );
+            }
 
             /*if (website.name) {
                 var newID = (new Date()).getTime();

@@ -28,28 +28,31 @@
                         vm.error = "User not found";
                     }
 
-                );*/
-            // new with Login
-            UserService
-                .login(username, password)
-                .then(
-                    function(response) {
-                        var user = response.data;
+                );*/    if (username && password) {
+                
+                // new with Login
+                UserService
+                    .login(username, password)
+                    .then(
+                        function(response) {
+                            var user = response.data;
 
-                        if (user) {
-                            $rootScope.currentUser = user; //
-                            var id = user._id;
-                            $location.url("/user/" + id);
-                        } else { // hopefully a temporary fix
+                            if (user) {
+                                $rootScope.currentUser = user; //
+                                var id = user._id;
+                                $location.url("/user/" + id);
+                            } else { // hopefully a temporary fix
+                                vm.error = "User not found";
+
+                            }
+                        },// UserService never responds with an error, always going into the function(response) above
+                        function(error) {
                             vm.error = "User not found";
-
                         }
-                    },// UserService never responds with an error, always going into the function(response) above
-                    function(error) {
-                        vm.error = "User not found";
-                    }
 
-                );
+                    );
+            }
+
         }
     }
 })();

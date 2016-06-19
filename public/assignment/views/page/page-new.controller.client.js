@@ -28,7 +28,6 @@
                             vm.error = "Name and title are required";
                         }
                     );
-            } else {
             }
 
 

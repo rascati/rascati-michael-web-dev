@@ -23,26 +23,28 @@
         // }
 
         function register(username, password, verify) {
-            UserService
-                .register(username, password)
-                .then(
-                    function(response) {
-                        var user = response.data;
+            if (username != null && (password == verify)) {
+                UserService
+                    .register(username, password)
+                    .then(
+                        function(response) {
+                            var user = response.data;
 
-                        console.log(user);
+                            console.log(user);
 
-                        if (user.username != null && user.password != null) {
-                            $rootScope.currentUser = user; //
-                            var id = user._id;
-                            $location.url("/user/" + id);
-                        } else { // hopefully a temporary fix
-                            vm.error = "User not found";
+                            if (user) {
+                                $rootScope.currentUser = user; //
+                                var id = user._id;
+                                $location.url("/user/" + id);
+                            } else { // hopefully a temporary fix
+                                vm.error = "User not found";
+                            }
+                        },
+                        function(error) {
+                            vm.error = error.data;
                         }
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                );
+                    );
+            }
         }
         // function register(username, password, verify) {
         //     UserService

@@ -23,18 +23,20 @@
         init();
 
         function updateWebsite() {
-            WebsiteService
-                .updateWebsite(vm.websiteId, vm.website)
-                .then(
-                    function(response) {
-                        //maybe don't redirect, just edit and leave it
-                        $location.url("/user/" + vm.userId + "/website");
-                        vm.success = "Website successfully updated";
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                );
+            if (vm.website.name) {
+                WebsiteService
+                    .updateWebsite(vm.websiteId, vm.website)
+                    .then(
+                        function(response) {
+                            //maybe don't redirect, just edit and leave it
+                            $location.url("/user/" + vm.userId + "/website");
+                            vm.success = "Website successfully updated";
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    );
+            }
         }
 
         function deleteWebsite() {

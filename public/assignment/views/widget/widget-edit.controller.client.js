@@ -27,17 +27,22 @@
         init();
 
         function updateWidget() {
-            WidgetService
-                .updateWidget(vm.widgetId, vm.widget)
-                .then(
-                    function(response) {
-                        $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                        vm.success = "Widget successfully updated";
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                );
+            // console.log();
+
+            if ((vm.widget.name != null) && (vm.widget.size != null) && (vm.widget.text != null)) {
+                WidgetService
+                    .updateWidget(vm.widgetId, vm.widget)
+                    .then(
+                        function(response) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                            vm.success = "Widget successfully updated";
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    );
+            }
+
             /*var result = WidgetService.updateWidget(vm.widget._id, vm.widget);
             if (result) {
                 $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");

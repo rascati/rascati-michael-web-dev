@@ -11,10 +11,13 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget()" class="navbar-link">
+                <button ng-click="model.updateWidget()"
+                        class="navbar-link"
+                        type="submit"
+                        form="myForm" >
                     <span class="glyphicon glyphicon-ok">
                     </span>
-                </a>
+                </button>
             </p>
         </div>
     </div>
@@ -22,14 +25,18 @@
 
 <!--"_id": "678", "widgetType": "YOUTUBE", "pageId": "321",  "width": "100%",  "url": "https://youtu.be/jwu2y9x5OlM"},-->
 
-<form>
+<form id="myForm" name="myForm" novalidate>
     <div class="form-group">
         <label for="name">Name</label>
         <input ng-model="model.widget.name"
                type="text"
                class="form-control"
                id="name"
-               placeholder="Widget Name">
+               name="name"
+               placeholder="Widget Name" required>
+        <span ng-show="myForm.$submitted && myForm.name.$invalid">
+            Video name is required
+        </span>
     </div>
     <div class="form-group">
         <label for="text">Text</label>

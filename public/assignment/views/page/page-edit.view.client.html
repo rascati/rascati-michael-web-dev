@@ -30,8 +30,9 @@
                type="text"
                class="form-control"
                id="name"
+               name="name"
                placeholder="Page Name" required/>
-        <span ng-show="myForm.$submitted && myForm.$invalid">
+        <span ng-show="myForm.$submitted && myForm.name.$invalid">
             Page name required
         </span>
     </div>
