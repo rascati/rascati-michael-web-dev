@@ -19,7 +19,7 @@
                             var newWebsite = response.data;
 
                             if (newWebsite) {
-                                //$location.url("/user/" + vm.userId + "/website");
+                                $location.url("/user/" + vm.userId + "/website");
                             }
                         },
                         function(error) {
