@@ -19,21 +19,25 @@
 </div>
 
 <h2>Login</h2>
-<input ng-model="username"
-       class="form-control"
-       placeholder="username"
-       type="text"/>
-<input ng-model="password"
-       class="form-control"
-       placeholder="password"
-       type="password">
 
-<a ng-click="model.login(username, password)"
-   class="btn btn-primary btn-block">Login</a>
+<div class="loginForms">
+    <input ng-model="username"
+           class="form-control"
+           placeholder="username"
+           type="text"/>
+    <input ng-model="password"
+           class="form-control"
+           placeholder="password"
+           type="password">
 
-<a class="btn btn-primary btn-block"
-   href="#/register">Register</a>
+    <a ng-click="model.login(username, password)"
+       class="btn btn-primary btn-block">Login</a>
 
-<a href="/auth/google" id="google" class="btn btn-primary btn-block">
-    <span class="fa fa-google-plus"></span>
-    Google</a>
+    <a class="btn btn-primary btn-block"
+       href="#/register">Register</a>
+
+    <a href="/auth/google" id="google" class="btn btn-primary btn-block">
+        <span class="fa fa-google-plus"></span>
+        Google</a>
+
+</div>
