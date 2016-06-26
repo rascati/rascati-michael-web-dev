@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="initial-scale=1.25, user-scalable = no">
+
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+
 
 <head>
     <meta charset="UTF-8">
@@ -10,30 +19,56 @@
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <title>Web Dev Course Home Page</title>
 </head>
-<body>
-    <h2>Web Dev Course Home Page</h2>
-    <h3>Michael Rascati</h3>
 
-    <p>
-        rascati.m@husky.neu.edu
-    </p>
+<nav class="navbar navbar-inverse navbar-fixed-top mike-navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                Michael Rascati
+            </a>
+        </div>
+        <p class="navbar-text pull-right anchor">
+            <a class="top-right">
+                CS 4550 Homepage
+            </a>
+        </p>
+    </div>
+</nav>
 
-    <img src="images/huskyidphoto.jpg" style="width:130px;height:130px;">
+<body class="container">
+    <div style="text-align: center;">
+        <img src="images/huskyidphoto.jpg" style="width:130px;height:130px; margin: 10px;">
+        <p class="email">
+            rascati.m@husky.neu.edu
+        </p>
 
-    <h4>Required links</h4>
-    <ul>
-        <li>
-            <a href="http://webdevproject-alexandergomez.rhcloud.com/#/home">Project</a>
-        </li>
-        <li>
-            <a href="assignment/#/login">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/rascati/rascati-michael-web-dev">My public GitHub repository</a>
-        </li>
-    </ul>
+        <p class="paragraph">
+            I worked on the final project, <a href="http://webdevproject-alexandergomez.rhcloud.com/#/home">Thrifty</a>,
+            with my partner <a href="http://webdev-alexandergomez.rhcloud.com/">Alexander Gomez</a>.
+            The project is in a separate repo from the assignment (approved by the professor), which is linked below.
+        </p>
+        <br>
+        <br>
+        <br>
+        <div>
+            <a class="mybutton" href="http://webdevproject-alexandergomez.rhcloud.com/#/home" class="navbar-link">
+                Project
+            </a>
+            &nbsp&nbsp·&nbsp&nbsp
+            <a class="mybutton" href="https://github.com/AlexanderJGomez/webdevproject" class="navbar-link">
+                Project repo
+            </a>
+            &nbsp&nbsp·&nbsp&nbsp
+            <a class="mybutton" href="https://github.com/rascati/rascati-michael-web-dev" class="navbar-link">
+                Assignment repo
+            </a>
+            &nbsp&nbsp·&nbsp&nbsp
+            <a class="mybutton" href="assignment/#/login" class="navbar-link">
+            Web App Maker
+            </a>
+        </div>
+</div>
+    <a class="btn btn-link btn-block btn-sm" href="test/index.html">Test MongoDB</a>
+
 </body>
 </html>
